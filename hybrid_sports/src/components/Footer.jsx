@@ -3,13 +3,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrophy } from '@fortawesome/free-solid-svg-icons';
 import { logo } from "../assets";
 import { footerLinks, socialMedia } from "../constants";
+import { Link } from 'react-router-dom';
 
 const Footer = () => (
   <section className={`${styles.flexCenter} ${styles.paddingY} flex-col`}>
     <div className={`${styles.flexStart} md:flex-row flex-col mb-8 w-full`}>
       <div className="flex items-center mb-4">
-        <FontAwesomeIcon icon={faTrophy} className="text-green-700 text-xl mr-2" />
-        <span className="text-green-800 font-bold text-xl">Hybrid Sports</span>
+        <FontAwesomeIcon icon={faTrophy} className="text-blue-800 text-xl mr-2" />
+        <span className="text-dimWhite font-bold text-xl">Hybrid Sports</span>
       </div>
 
       <p className={`${styles.paragraph} max-w-[312px]`}>

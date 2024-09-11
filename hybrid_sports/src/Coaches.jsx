@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import styles from "./style";
-import { Navbar, Footer, Testimonials, CoachRegistration, SignIn, CoachesSession } from "./components";
+import { Navbar, Footer, Testimonials, CoachRegistration, SignIn, CoachesSession, PlayerRegistration } from "./components";
 import { people01, people02, people03 } from './assets';
 
 
@@ -77,20 +77,27 @@ const CoachesPage = () => {
   };
 
   return (
-    <div className="bg-primary w-full overflow-hidden">
+    <div className="bg-slate-900 w-full overflow-hidden">
       <div className={`${styles.paddingX} ${styles.flexCenter}`}>
         <div className={`${styles.boxWidth}`}>
           <Navbar />
-          <CoachRegistration />
+          
         </div>
       </div>
       <div className="container mx-auto p-4 pt-6 md:p-6 lg:p-12">
-        <h1 className="text-3xl font-bold mb-4 text-green-500">Coaches Available</h1>
-        <p className="text-lg mb-8 text-green-500">
-          Our team of experienced coaches and trainers are dedicated to helping you achieve your fitness goals.
-        </p>
+      <h1 className="text-3xl font-bold mb-4 text-blue-800">Life is Better When We Play Together 🎾</h1>
+        <h1 className="text-xl3 sm:text-xl4 leading-xl sm:leading-xl2 font-bold text-gray-500 factorial__headingFontFamily">
+        At HybridSports, we're revolutionizing the world of sports by bringing together traditional and emerging sports through our cutting-edge platform. As the largest sports booking app and SaaS for venues, we're not just focusing on racket sports—we're bridging the gap between various disciplines, from tennis and padel to new-age hybrid sports that blend the best of both worlds.
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+With a global footprint in over 49 countries, we've partnered with 4,800 clubs, offering access to 21,000 courts and connecting 3.1 million players. Our community is passionate about exploring new ways to play, blending classic sports with innovative hybrids that challenge the status quo.
+
+Whether you're a fan of traditional racket sports or curious about trying something new, HybridSports is your gateway to a diverse sports experience. Join us as we push the boundaries of sports engagement, connecting players and venues in ways that inspire creativity and competition.
+
+Explore the future of sports with HybridSports—where innovation meets passion, and everyone can find their perfect game.
+Our team of experienced coaches and trainers are dedicated to helping you achieve your fitness goals.
+        </h1><br></br>
+        <h1 className="text-3xl font-bold mb-3 text-blue-800">Coaches Available</h1>
+        <div className="space-y-4">
           {coaches.map((coach, index) => (
             <CoachCard
               key={index}
@@ -98,6 +105,11 @@ const CoachesPage = () => {
               onClick={() => handleCoachClick(coach)} // Pass the coach data to the click handler
             />
           ))}
+        </div>
+        <div className={`${styles.paragraph} max-w-[470px] mt-5`}>   
+          <div className="flex  mt-50">
+            <PlayerRegistration/>
+          </div>
         </div>
       </div>
 
@@ -120,19 +132,19 @@ const CoachesPage = () => {
 
 const CoachCard = ({ name, title, sport, academy, bio, email, phoneNumber, profilePicture, onClick }) => {
   return (
-    <article className="bg-white shadow-md rounded p-4 cursor-pointer" onClick={onClick}>
+    <article className="bg-blue-950 shadow-md rounded p-4 cursor-pointer" onClick={onClick}>
       <div className="flex items-center mb-4">
         <img src={profilePicture} alt={`${name}'s Profile`} className="w-16 h-16 rounded-full mr-4" />
         <div>
-          <h2 className="text-lg font-bold">{name}</h2>
-          <p className="text-sm mb-1">{title}</p>
-          <p className="text-sm mb-1">{sport}</p>
-          <p className="text-sm mb-1">{academy}</p>
+          <h2 className="text-lg  text-fuchsia-700 font-bold">{name}</h2>
+          <p className="text-sm text-fuchsia-200 mb-1">{title}</p>
+          <p className="text-sm text-fuchsia-200 mb-1">{sport}</p>
+          <p className="text-sm text-fuchsia-200 mb-1">{academy}</p>
         </div>
       </div>
-      <p className="text-sm mb-1">{bio}</p>
-      <p className="text-sm">Email: {email}</p>
-      <p className="text-sm">Phone: {phoneNumber}</p>
+      <p className="text-sm text-blue-50 mb-1">{bio}</p>
+      <p className="text-sm text-blue-50">Email: {email}</p>
+      <p className="text-sm text-blue-50">Phone: {phoneNumber}</p>
     </article>
   );
 };
@@ -140,7 +152,7 @@ const CoachCard = ({ name, title, sport, academy, bio, email, phoneNumber, profi
 const CoachProfile = ({ coach, onClose }) => {
   return (
     <div className="fixed inset-0 bg-black bg-opacity-80 flex justify-center items-center">
-      <div className="bg-yellow-100 p-5 rounded shadow-md w-full max-w-lg mx-4">
+      <div className="bg-blue-950 p-5 rounded shadow-md w-full max-w-lg mx-4">
         <h2 className="text-xl font-bold">{coach.name}</h2>
         <img src={coach.profilePicture} alt={`${coach.name}'s Profile`} className="w-32 h-32 rounded-full mb-4" />
         <p className="text-lg font-semibold">{coach.title}</p>

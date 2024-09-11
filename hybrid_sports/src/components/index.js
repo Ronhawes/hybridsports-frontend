@@ -19,7 +19,9 @@ import NextEvents from "./NextEvents";
 import Results from "./Results";
 import Hero2 from "./Hero2";
 import CoachesSession from "./Button1";
-
+import PlayerRegistration from "./PlayerRegistration";
+import CourtRegistration from "./CourtRegistration";
+import BlockBooking from "./BlockBooking";
 
 export {
   Navbar,
@@ -42,6 +44,9 @@ export {
   NextEvents,
   Results,
   Hero2,
-  CoachesSession
+  CoachesSession,
+  PlayerRegistration,
+  CourtRegistration,
+  BlockBooking
   
 };

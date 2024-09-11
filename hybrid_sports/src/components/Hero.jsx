@@ -2,9 +2,8 @@ import { useState, useEffect } from 'react';
 import styles from "../style";
 import { discount, racket, racket2, racket3 } from "../assets"; // Import racket images
 import { Link } from 'react-router-dom';
-import EventRegistration from "./EventRegistration";
-import CoachRegistration from "./Coaches";
-import Academies from "./Academies";
+import PlayerRegistration from './PlayerRegistration';
+
 
 const Hero = () => {
   const [currentImage, setCurrentImage] = useState(0);
@@ -41,7 +40,7 @@ const Hero = () => {
         <div className="flex flex-row justify-between items-center w-full">
           <h1 className="flex-1 font-poppins font-semibold ss:text-[72px] text-[52px] text-white ss:leading-[100.8px] leading-[75px]">
             Looking for someone to <br className="sm:block hidden" />{" "}
-            <span className="text-gradient">{phrases[currentPhraseIndex]}</span>{" "}
+            <span className="text-gradient ">{phrases[currentPhraseIndex]}</span>{" "}
           </h1>
           <div className="ss:flex hidden md:mr-4 mr-0"></div>
         </div>
@@ -54,9 +53,7 @@ const Hero = () => {
 
         <div className={`${styles.paragraph} max-w-[470px] mt-5`}>   
           <div className="flex justify-center mt-50">
-            <Academies className="mr-4">Register an Academy</Academies>
-            <EventRegistration className="mx-4">Register your Event</EventRegistration>
-            <CoachRegistration className="ml-4">Coach/Trainer Registration</CoachRegistration>
+            <PlayerRegistration/>
           </div>
         </div>
       </div>

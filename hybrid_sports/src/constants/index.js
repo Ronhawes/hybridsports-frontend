@@ -14,16 +14,33 @@ export const navLinks = [
     title: "Coaches ",
     link: "/coaches"
   },
-  {
-    id: "academies",
-    title: "Academies",
-    link: "/Academies"
-  },
+ 
   
   {
     id: "Mercavi",
     title: "Events",
     link: "/Events"
+  },
+  
+  {
+    id: "Mercavi",
+    title: "Players",
+    link: "/Players"
+  },
+  {
+    id: "Mercavi",
+    title: "Courts",
+    link: "/Courts"
+  },
+  {
+    id: "Mercavi",
+    title: "Shop",
+    link: "/Events"
+  },
+  {
+    id: "Mercavi",
+    title: "Tournaments",
+    link: "/Mercavi"
   },
   
 ];
@@ -35,7 +52,7 @@ export const ongoingEvents = [
     title: "Kenya open",
     date: "August 20, 2024",
     location: "Paris,France",
-    Image: racket2
+    Image: racket2 
   },
   {
     id: "event-2",
@@ -87,19 +104,19 @@ export const feedback = [
     img: people01,
   },
   {
-    id: "expert-2",
+    id: "jane smith",
     content:
-      "Trainer Mark mabonga focuses on strength and conditioning. he has helped countless athletes achieve their personal bests.",
-    name: "Trainer Mark Mabonga",
-    title: "Strength & Conditioning Coach",
+      "Bob has competed in several national tennis competitions and has a strong track record.Personal Statement: Tennis is my passion, and I aim to continue improving my personal bests.",
+    name: "Bob Albert",
+    title: "Kenya top seed",
     img: people02,
   },
   {
     id: "expert-3",
     content:
-      "The High tennis Sports Academy offers a comprehensive training program for aspiring athletes, focusing on skills development and competition preparation.",
-    name: "High tennis Academy",
-    title: "Training & Development",
+      "The High tennis Sports Academy offers a comprehensive training program for aspiring athletes, focusing on skills development and competition preparation. Our tennis academy offers private and group lessons for players of all ages and skill levels.",
+    name: "DROPSHOT_PERFORMANCE",
+    title: "High tennis Academy",
     img: people03,
   },
 ];
@@ -126,24 +143,24 @@ export const footerLinks = [
     title: "Useful Links",
     links: [
       {
-        name: "Content",
-        link: "https://www.hoobank.com/content/",
+        name: "Home page",
+        link: "/",
       },
       {
-        name: "How it Works",
-        link: "https://www.hoobank.com/how-it-works/",
+        name: "Coaches",
+        link: "/coaches",
       },
       {
-        name: "Create",
-        link: "https://www.hoobank.com/create/",
+        name: "Academies",
+        link: "/Academies",
       },
       {
-        name: "Explore",
-        link: "https://www.hoobank.com/explore/",
+        name: "Players",
+        link: "/Players",
       },
       {
-        name: "Terms & Services",
-        link: "https://www.hoobank.com/terms-and-services/",
+        name: "Tournaments",
+        link: "/Events"
       },
     ],
   },
@@ -155,32 +172,25 @@ export const footerLinks = [
         link: "https://www.hoobank.com/help-center/",
       },
       {
-        name: "Partners",
+        name: "Sponsors",
         link: "https://www.hoobank.com/partners/",
       },
       {
         name: "Suggestions",
         link: "https://www.hoobank.com/suggestions/",
       },
-      {
-        name: "Blog",
-        link: "https://www.hoobank.com/blog/",
-      },
-      {
-        name: "Newsletters",
-        link: "https://www.hoobank.com/newsletters/",
-      },
+      
     ],
   },
   {
     title: "Partner",
     links: [
       {
-        name: "Our Partner",
+        name: "Our Sponsors",
         link: "https://www.hoobank.com/our-partner/",
       },
       {
-        name: "Become a Partner",
+        name: "Become a Sponsor",
         link: "https://www.hoobank.com/become-a-partner/",
       },
     ],

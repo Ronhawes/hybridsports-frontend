@@ -3,28 +3,70 @@ import { ongoingEvents } from "../constants"; // Make sure this is updated with 
 import styles, { layout } from "../style";
 import Button from "./Button";
 
-const EventCard = ({ title, date, location, Image }) => (
-  <div className="relative flex-shrink-0 w-full h-80 rounded-[20px] overflow-hidden my-4 mx-2">
-    <div
-      className="absolute inset-0 w-full h-full bg-cover bg-center"
-      style={{ backgroundImage: `url(${Image})` }}
-    ></div>
-    <div className="relative z-10 flex-1 flex flex-col justify-center p-8 bg-black bg-opacity-50 rounded-[20px]">
-      <h4 className="font-poppins font-semibold text-white text-[24px] leading-[28px] mb-2">
-        {title}
-      </h4>
-      <p className="font-poppins font-normal text-dimWhite text-[18px] leading-[26px]">
-        {date} <br />
-        {location}
-      </p>
-      <div className="flex mt-4">
-        <Button styles={`mt-2`} label="Purchase Ticket" />
+const EventCard = ({ title, date, location, Image }) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleOpenModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
+
+  return (
+    <div className="flex-shrink-0 w-full max-w-md mx-2 my-4">
+      {/* Event image */}
+      <div
+        className="w-full h-[300px] rounded-[20px] overflow-hidden cursor-pointer"
+        style={{
+          backgroundImage: `url(${Image})`,
+          backgroundSize: 'cover',
+          backgroundRepeat: 'no-repeat',
+          backgroundPosition: 'center',
+        }}
+        onClick={handleOpenModal} // Open modal when clicked
+      />
+      {/* Event details */}
+      <div className="p-4 bg-slate-900 bg-opacity-60 rounded-b-[20px]">
+        <h4 className="font-poppins font-semibold text-white text-[28px] leading-[32px] mb-3">
+          {title}
+        </h4>
+        <p className="font-poppins font-normal text-gray-300 text-[20px] leading-[28px] mb-2">
+          {date}
+        </p>
+        <p className="font-poppins font-normal text-gray-200 text-[18px] leading-[24px]">
+          {location}
+        </p>
+
+        {/* Show Court Button */}
+        <div className="flex justify-center mt-4">
+          <Button styles={`mt-2`} label="Show Court" onClick={handleOpenModal} />
+        </div>
       </div>
+
+      {/* Full-screen Modal for Enlarged Image */}
+      {isModalOpen && (
+        <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-80 flex justify-center items-center z-50">
+          <div className="relative w-full max-w-4xl h-full">
+            <img
+              src={Image}
+              alt="Enlarged Court"
+              className="object-cover w-full h-full rounded-[20px]"
+            />
+            {/* Exit Button */}
+            <button
+              className="absolute top-4 right-4 bg-red-500 text-white py-2 px-4 rounded-full"
+              onClick={handleCloseModal}
+            >
+              Exit
+            </button>
+          </div>
+        </div>
+      )}
     </div>
-  </div>
-);
-
-
+  );
+};
 
 const OngoingEvents = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -42,19 +84,19 @@ const OngoingEvents = () => {
   };
 
   return (
-    <section id="events" className="w-full bg-primary py-10 flex justify-center items-center relative">
+    <section id="events" className="w-full bg-slate-900 py-10 flex justify-center items-center relative h-screen px-4">
       <button
-        className="absolute left-0 p-2 bg-gray-500 text-white rounded-full"
+        className="absolute left-0 p-4 bg-gray-700 text-white rounded-full shadow-lg"
         onClick={handlePrev}
         disabled={currentIndex === 0}
       >
         &lt;
       </button>
 
-      <div className="w-full max-w-lg overflow-hidden">
+      <div className="w-full max-w-4xl overflow-hidden">
         <div
           className="flex transition-transform duration-500"
-          style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+          style={{ transform: `translateX(-${currentIndex * 100}%)`, display: 'flex', flexDirection: 'row' }}
         >
           {ongoingEvents.map((event, index) => (
             <EventCard key={event.id} {...event} />
@@ -63,7 +105,7 @@ const OngoingEvents = () => {
       </div>
 
       <button
-        className="absolute right-0 p-2 bg-gray-500 text-white rounded-full"
+        className="absolute right-0 p-4 bg-gray-700 text-white rounded-full shadow-lg"
         onClick={handleNext}
         disabled={currentIndex === ongoingEvents.length - 1}
       >

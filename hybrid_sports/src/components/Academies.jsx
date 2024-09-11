@@ -16,7 +16,8 @@ const Button = ({ additionalClasses = "", children }) => {
     <>
       <button
         type="button"
-        className={`py-4 px-6 font-poppins font-medium text-[18px] text-primary bg-blue-gradient rounded-[10px] outline-none ${additionalClasses}`}
+        className={`py-4 px-6 font-poppins font-medium text-[18px] border border-blue-800 bg-transparent rounded-[10px] hover:text-blue-800 outline-none ${additionalClasses}`}
+
         onClick={() => setShowForm(true)}
       >
         {children}
