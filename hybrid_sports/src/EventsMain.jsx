@@ -2,7 +2,7 @@ import styles from "./style";
 import { Hero, Navbar, Footer, Testimonials, Events, Stats, SignIn, PlayerRegistration } from "./components";
 
 const EventsMain = () => (
-  <div className="bg-slate-900 w-full overflow-hidden">
+  <div className="bg-gray-700 w-full overflow-hidden">
     {/* Navbar Section */}
     <div className={`${styles.paddingX} ${styles.flexCenter}`}>
       <div className={`${styles.boxWidth}`}>
@@ -17,7 +17,7 @@ const EventsMain = () => (
   < div className={` container mx-auto p-4 pt-6 md:p-6 lg:p-12 mt-20 w-full`}>
       <h1 className="text-3xl font-bold mb-4 text-blue-800">Get your tickets</h1>
       <h1 className="text-3xl font-bold mb-4 text-blue-800">Life is Better When We Play Together 🎾</h1>
-        <h1 className="text-xl3 sm:text-xl4 leading-xl sm:leading-xl2 font-bold text-gray-500 factorial__headingFontFamily">
+        <h1 className="text-xl3 sm:text-xl4 leading-xl sm:leading-xl2 font-bold text-black  factorial__headingFontFamily">
         At HybridSports, we're revolutionizing the world of sports by bringing together traditional and emerging sports through our cutting-edge platform. As the largest sports booking app and SaaS for venues, we're not just focusing on racket sports—we're bridging the gap between various disciplines, from tennis and padel to new-age hybrid sports that blend the best of both worlds.
 
 With a global footprint in over 49 countries, we've partnered with 4,800 clubs, offering access to 21,000 courts and connecting 3.1 million players. Our community is passionate about exploring new ways to play, blending classic sports with innovative hybrids that challenge the status quo.
@@ -36,10 +36,10 @@ Our team of experienced coaches and trainers are dedicated to helping you achiev
     <div className={`${styles.boxWidth}`}>
       <Events/>
       <Testimonials />
-      <Footer />
+      
     </div>
   </div>
-    
+  <div className='bg-slate-900'><Footer/></div>
   </div>
 );
 

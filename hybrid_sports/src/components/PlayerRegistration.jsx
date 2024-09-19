@@ -7,6 +7,7 @@ const PlayerRegistration = ({ additionalClasses = "" }) => {
     fullnames: '',
     phoneNo: '',
     sport: '',
+    location: '',
     email: '',
     gender: '',
     role: '',
@@ -39,13 +40,14 @@ const PlayerRegistration = ({ additionalClasses = "" }) => {
   const onSubmit = async (event) => {
     event.preventDefault();
     setResult("Sending...");
-    const formData = new FormData(event.target);
+    const submissionData = new FormData(event.target);
 
-    formData.append("access_key", "b555f569-3d2d-49a8-8c7b-8a6e652a1722");
+    submissionData.append("access_key", "cbb8ebc3-cc8c-432a-976a-5031db7344b0");
+    submissionData.append("profilePicture", formData.profilePicture);
 
     const response = await fetch("https://api.web3forms.com/submit", {
       method: "POST",
-      body: formData
+      body: submissionData
     });
 
     const data = await response.json();
@@ -70,13 +72,14 @@ const PlayerRegistration = ({ additionalClasses = "" }) => {
       </button>
       {showForm && (
         <div className="fixed inset-0 bg-black bg-opacity-80 flex justify-center items-center z-50">
-          <div className="bg-transparent p-5 rounded shadow-md w-full max-w-lg mx-4 mt-8 max-h-[80vh] overflow-y-auto"> {/* Set max height and enable vertical scroll */}
+          <div className="bg-transparent p-5 rounded shadow-md w-full max-w-lg mx-4 mt-8 max-h-[80vh] overflow-y-auto">
+            {/* Set max height and enable vertical scroll */}
             <form
-              onSubmit={onSubmit} // Attach the async submission handler
+              onSubmit={onSubmit}
               onKeyPress={handleKeyPress}
             >
               <h2 className="font-poppins font-semibold text-[32px] text-white leading-[40px] w-full">
-                Register as a Player/Coach/academy
+                Register as a Player/Coach/Academy
               </h2>
               <p className="mt-4 text-white p-2 rounded">Please fill in the details below</p>
 
@@ -105,6 +108,16 @@ const PlayerRegistration = ({ additionalClasses = "" }) => {
                 type="text" 
                 name="sport" 
                 value={formData.sport} 
+                onChange={handleChange} 
+                className="bg-black border p-2 mb-4 w-full" 
+                required 
+              />
+
+              <label className="mt-4 text-white p-2 rounded">* Location:</label>
+              <input 
+                type="text" 
+                name="location" 
+                value={formData.location} 
                 onChange={handleChange} 
                 className="bg-black border p-2 mb-4 w-full" 
                 required 
@@ -148,6 +161,19 @@ const PlayerRegistration = ({ additionalClasses = "" }) => {
                 <option value="academy">Academy</option>
               </select>
 
+              <label className="mt-4 text-white p-2 rounded">Preferred Payment:</label>
+              <select 
+                name="paymentMethod" 
+                value={formData.paymentMethod} 
+                onChange={handleChange} 
+                className="bg-black border p-2 mb-4 w-full"
+              >
+                <option value="">Select Preferred Payment</option>
+                <option value="mpesa">Mpesa</option>
+                <option value="paypal">Paypal</option>
+                <option value="other">Other</option>
+              </select>
+
               <label className="mt-4 text-white p-2 rounded">Bio / More Info:</label>
               <textarea 
                 name="bio"
@@ -158,14 +184,13 @@ const PlayerRegistration = ({ additionalClasses = "" }) => {
               />
 
               
-
               {/* Optional SignIn component */}
               <SignIn />
 
-              {/* Submit button with onClick */}
+              {/* Submit button */}
               <button
-                type="submit" // Changed to "submit" for the form submission
-                className="mt-4 bg-gray-500 text-white p-2 rounded btn-primary"
+                type="submit"
+                className="mt-4 bg-gray-500 text-white p-2 rounded"
               >
                 Submit
               </button>
@@ -173,7 +198,7 @@ const PlayerRegistration = ({ additionalClasses = "" }) => {
               {/* Display the result message */}
               <p className="mt-4 text-white">{result}</p>
 
-              {/* Exit button to go back to home */}
+              {/* Exit button */}
               <button
                 type="button"
                 onClick={handleExit}

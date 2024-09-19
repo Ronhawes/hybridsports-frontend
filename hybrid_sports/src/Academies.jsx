@@ -15,8 +15,8 @@ const AcademiesPage = () => {
 
   const academies = [
     {
-      name: "INFINITY_SOCCER_ACADEMY",
-      description: "Our football academy offers training programs for players of all ages and skill levels.",
+      name: "SOCCER",
+      description: "Our  academy offers training programs for players of all ages and skill levels.",
       image: soccer,
       link: "/academies/football",
       sport: "soccer",
@@ -29,8 +29,8 @@ const AcademiesPage = () => {
       pitches: "5 pitches available"
     },
     {
-      name: "PRO_PADEL",
-      description: "Our basketball academy provides training programs focused on skill development and team play.",
+      name: "PADEL",
+      description: "Our  academy provides training programs focused on skill development and team play.",
       image: racket,
       link: "/academies/basketball",
       sport: "padel",
@@ -43,8 +43,8 @@ const AcademiesPage = () => {
       pitches: "2 courts available"
     },
     {
-      name: "DROPSHOT_PERFORMANCE_ACADEMIA",
-      description: "Our tennis academy offers private and group lessons for players of all ages and skill levels.",
+      name: "TENNIS",
+      description: "Our academy offers private and group lessons for players of all ages and skill levels.",
       image: racket3,
       link: "/academies/tennis",
       sport: "tennis",
@@ -57,8 +57,8 @@ const AcademiesPage = () => {
       pitches: "8 courts available"
     },
     {
-      name: "AQUATIC_SWIMMING_ACADEMIA",
-      description: "Our swim academy offers training programs for swimmers of all ages and skill levels.",
+      name: "SWIMMING",
+      description: "Our  academy offers training programs for swimmers of all ages and skill levels.",
       image: racket2,
       link: "/academies/swim",
       sport: "swimming",
@@ -92,7 +92,7 @@ const AcademiesPage = () => {
   };
 
   return (
-    <div className="bg-slate-900 w-full overflow-hidden">
+    <div className="bg-gray-500 w-full overflow-hidden">
       <div className={`${styles.paddingX} ${styles.flexCenter}`}>
         <div className={`${styles.boxWidth}`}>
           <Navbar />
@@ -100,9 +100,9 @@ const AcademiesPage = () => {
         </div>
       </div>
       <div className="container mx-auto p-4 pt-6 md:p-6 lg:p-12">
-        <h1 className="text-blue-800 text-3xl font-bold mb-4">Our Academies</h1>
-        <h1 className="text-3xl font-bold mb-4 text-blue-800">Life is Better When We Play Together 🎾</h1>
-        <h1 className="text-xl3 sm:text-xl4 leading-xl sm:leading-xl2 font-bold text-gray-500 factorial__headingFontFamily">
+        <h1 className="text-blue-800 text-3xl font-bold mb-4">HYBRID SPORTS ACADEMY</h1>
+        <h1 className="text-3xl font-bold mb-4 text-blue-800">We offer the following sports 🎾</h1>
+        <h1 className="text-xl3 sm:text-xl4 leading-xl sm:leading-xl2 font-bold text-black factorial__headingFontFamily">
         At HybridSports, we're revolutionizing the world of sports by bringing together traditional and emerging sports through our cutting-edge platform. As the largest sports booking app and SaaS for venues, we're not just focusing on racket sports—we're bridging the gap between various disciplines, from tennis and padel to new-age hybrid sports that blend the best of both worlds.
 
 With a global footprint in over 49 countries, we've partnered with 4,800 clubs, offering access to 21,000 courts and connecting 3.1 million players. Our community is passionate about exploring new ways to play, blending classic sports with innovative hybrids that challenge the status quo.
@@ -169,7 +169,7 @@ const AcademyCard = ({ name, description, image, onClick, sport, dayOfOperating,
       <p className="text-sm mb-2"><strong>Days:</strong> {dayOfOperating}</p>
       <p className="text-sm mb-2"><strong>Working Hours:</strong> {workingHours}</p>
       <p className="text-sm mb-2 text-blue-800"><strong>Rates:</strong> {rates}</p>
-      <button className="btn btn-primary underline">Visit page</button>
+      
     </div>
   );
 };

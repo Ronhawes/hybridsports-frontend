@@ -20,6 +20,7 @@ import Results from "./Results";
 import Hero2 from "./Hero2";
 import CoachesSession from "./Button1";
 import PlayerRegistration from "./PlayerRegistration";
+import Player2Registration from "./Player2Registration";
 import CourtRegistration from "./CourtRegistration";
 import BlockBooking from "./BlockBooking";
 
@@ -46,6 +47,7 @@ export {
   Hero2,
   CoachesSession,
   PlayerRegistration,
+  Player2Registration,
   CourtRegistration,
   BlockBooking
   

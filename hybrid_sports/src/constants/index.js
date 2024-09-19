@@ -34,7 +34,7 @@ export const navLinks = [
   },
   {
     id: "Mercavi",
-    title: "Shop",
+    title: "our_services",
     link: "/Events"
   },
   {
@@ -42,6 +42,11 @@ export const navLinks = [
     title: "Tournaments",
     link: "/Mercavi"
   },
+  {
+    id: "Academies",
+    title: "Academies",
+    link: "/Academies"
+  }  
   
 ];
 

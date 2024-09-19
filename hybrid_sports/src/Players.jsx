@@ -144,7 +144,7 @@ const PlayersPage = () => {
   };
 
   return (
-    <div className="bg-slate-900 w-full overflow-hidden">
+    <div className="bg-gray-600 w-full overflow-hidden">
       <div className={`${styles.paddingX} ${styles.flexCenter}`}>
         <div className={`${styles.boxWidth}`}>
           <Navbar />
@@ -193,9 +193,10 @@ Explore the future of sports with HybridSports—where innovation meets passion,
       <div className={`${styles.paddingX} ${styles.flexCenter}`}>
         <div className={`${styles.boxWidth}`}>
           <Testimonials />
-          <Footer />
+          
         </div>
       </div>
+      <div className='bg-slate-900'><Footer/></div>
     </div>
   );
 };

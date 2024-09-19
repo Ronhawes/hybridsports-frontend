@@ -1,6 +1,6 @@
 import styles from "./style";
 import { useState } from "react";
-import { Ranking, NextEvents, Navbar, Footer, Hero2, Testimonials } from './components';
+import { Ranking, NextEvents, Navbar, Footer, Hero2, Testimonials, Player2Registration } from './components';
 import { tour1, tour2, tour3, tour4 , tour8, video1} from "./assets";
 import { quotes } from "./assets";
 
@@ -13,7 +13,7 @@ const Mercavi = () => {
   };
 
   return (
-    <div className="bg-slate-900 w-full overflow-hidden">
+    <div className="bg-gray-600 w-full overflow-hidden">
       <div className={`${styles.paddingX} ${styles.flexCenter}`}>
         <div className={`${styles.boxWidth}`}>
           <Navbar className="mr-4" /><br /><br /><br />
@@ -90,10 +90,11 @@ const Mercavi = () => {
         <div className={`${styles.boxWidth}`}>
           
           <Testimonials /><br />
+         
           
-          <Footer />
         </div>
       </div>
+      <div className="bg-black"><Footer /></div>
     </div>
   );
 };

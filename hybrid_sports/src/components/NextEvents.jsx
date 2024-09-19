@@ -2,9 +2,11 @@ import React, { useState } from 'react';
 import { tour5, tour6, tour7 } from '../assets';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import Player2Registration from './Player2Registration';
 
 const NextEvents = () => {
   const [currentEvent, setCurrentEvent] = useState(0);
+  const [showRegistrationForm, setShowRegistrationForm] = useState(false); // State to toggle form visibility
 
   const nextEventsData = [
     { date: '2023-03-15', event: 'Knockout series', location: 'Public Service', image: tour5 },
@@ -14,6 +16,10 @@ const NextEvents = () => {
 
   const handleEventClick = (index) => {
     setCurrentEvent(index);
+  };
+
+  const toggleRegistrationForm = () => {
+    setShowRegistrationForm(!showRegistrationForm);
   };
 
   return (
@@ -49,17 +55,20 @@ const NextEvents = () => {
       <div className="text-center text-white mt-4">
         <p className="text-xl font-bold mb-4">{nextEventsData[currentEvent].event}</p>
         <p className="text-lg">{nextEventsData[currentEvent].date} - {nextEventsData[currentEvent].location}</p>
-      </div><br />
+      </div>
+      <br />
 
-      {/* Register Button with Link */}
+      {/* Register Button with Form Toggle */}
       <div className="text-center">
-        <a
-          href="https://docs.google.com/forms/d/e/1FAIpQLSfeZ1zfpk3Rrum0UnIhYtae0tZltGhXmvT_EXMrFHY2aBWaww/viewform?usp=sf_link"
-          target="_blank"
-          rel="noopener noreferrer"
+        <button
+          className="bg-blue-500 text-white py-2 px-4 rounded-lg"
+          onClick={toggleRegistrationForm}
         >
-          <button className="bg-blue-500 text-white py-2 px-4 rounded-lg">Register</button>
-        </a>
+          {showRegistrationForm ? 'Close Registration' : 'Register'}
+        </button>
+
+        {/* Display Registration Form when button is clicked */}
+        {showRegistrationForm && <Player2Registration />}
       </div>
     </section>
   );

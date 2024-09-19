@@ -83,7 +83,7 @@ const CoachSessionsButton = () => {
             <button
               type="button"
               onClick={() => scrollTo(-100)}
-              className="absolute top-0 left-1/2 transform -translate-x-1/2 bg-gray-600 text-white p-2 rounded-full"
+              className="absolute top-0 left-1/2 transform -translate-x-1/2 bg-gray-600  p-2 rounded-full"
               style={{ zIndex: 10 }}
             >
               <FontAwesomeIcon icon={faArrowUp} />
@@ -102,7 +102,7 @@ const CoachSessionsButton = () => {
                 name="fullName" 
                 value={formData.fullName} 
                 onChange={handleChange} 
-                className="bg-black border p-2 mb-4 w-full" 
+                className="bg-dimWhite border p-2 mb-4 w-full" 
                 required 
               />
 
@@ -112,7 +112,7 @@ const CoachSessionsButton = () => {
                 name="idNumber" 
                 value={formData.idNumber} 
                 onChange={handleChange} 
-                className="bg-black border p-2 mb-4 w-full" 
+                className="bg-dimWhite border p-2 mb-4 w-full" 
                 required 
               />
 
@@ -122,7 +122,7 @@ const CoachSessionsButton = () => {
                 name="email" 
                 value={formData.email} 
                 onChange={handleChange} 
-                className="bg-black border p-2 mb-4 w-full" 
+                className="bg-dimWhite border p-2 mb-4 w-full" 
                 required 
               />
 
@@ -132,7 +132,7 @@ const CoachSessionsButton = () => {
                 name="phoneNumber" 
                 value={formData.phoneNumber} 
                 onChange={handleChange} 
-                className="bg-black border p-2 mb-4 w-full" 
+                className="bg-dimWhite border p-2 mb-4 w-full" 
                 required 
               />
 
@@ -161,14 +161,15 @@ const CoachSessionsButton = () => {
                 name="paymentMethod"
                 value={formData.paymentMethod}
                 onChange={handleChange}
-                className="bg-yellow-200 border p-2 mb-4 w-full"
+                className="bg-green-500 border p-2 mb-4 w-full"
                 required
               >
                 <option value="" disabled>Select your payment method</option>
-                <option value="creditCard">Credit Card</option>
-                <option value="paypal">PayPal</option>
-                <option value="bankTransfer">Bank Transfer</option>
-                <option value="mobileMoney">Mobile Money</option>
+              
+                <option value="paypal">Mpesa</option>
+                <option value="paypal">Paypal</option>
+                <option value="paypal">other</option>
+                
               </select>
 
               <button

@@ -196,19 +196,7 @@ const Button = () => {
                 {formErrors.agreedToTerms && <p className="text-red-500">{formErrors.agreedToTerms}</p>}
               </div>
 
-              <div className="mt-4 text-white">
-                <label>
-                  <input
-                    type="checkbox"
-                    name="offers"
-                    checked={wantsOffers}
-                    onChange={handleCheckboxChange}
-                    className="mr-2"
-                  />
-                  I want to receive updates and special offers
-                </label>
-              </div>
-
+             
               <div className="mt-4 text-white flex items-center">
                 <button
                   type="button"

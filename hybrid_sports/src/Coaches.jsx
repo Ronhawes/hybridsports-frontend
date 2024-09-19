@@ -77,7 +77,7 @@ const CoachesPage = () => {
   };
 
   return (
-    <div className="bg-slate-900 w-full overflow-hidden">
+    <div className="bg-gray-600 w-full overflow-hidden">
       <div className={`${styles.paddingX} ${styles.flexCenter}`}>
         <div className={`${styles.boxWidth}`}>
           <Navbar />
@@ -86,7 +86,7 @@ const CoachesPage = () => {
       </div>
       <div className="container mx-auto p-4 pt-6 md:p-6 lg:p-12">
       <h1 className="text-3xl font-bold mb-4 text-blue-800">Life is Better When We Play Together 🎾</h1>
-        <h1 className="text-xl3 sm:text-xl4 leading-xl sm:leading-xl2 font-bold text-gray-500 factorial__headingFontFamily">
+        <h1 className="text-xl3 sm:text-xl4 leading-xl sm:leading-xl2 font-bold text-black factorial__headingFontFamily">
         At HybridSports, we're revolutionizing the world of sports by bringing together traditional and emerging sports through our cutting-edge platform. As the largest sports booking app and SaaS for venues, we're not just focusing on racket sports—we're bridging the gap between various disciplines, from tennis and padel to new-age hybrid sports that blend the best of both worlds.
 
 With a global footprint in over 49 countries, we've partnered with 4,800 clubs, offering access to 21,000 courts and connecting 3.1 million players. Our community is passionate about exploring new ways to play, blending classic sports with innovative hybrids that challenge the status quo.
@@ -123,9 +123,10 @@ Our team of experienced coaches and trainers are dedicated to helping you achiev
       <div className={`${styles.paddingX} ${styles.flexCenter}`}>
         <div className={`${styles.boxWidth}`}>
           <Testimonials />
-          <Footer />
+          
         </div>
       </div>
+      <div className='bg-slate-900'><Footer/></div>
     </div>
   );
 };
@@ -142,9 +143,9 @@ const CoachCard = ({ name, title, sport, academy, bio, email, phoneNumber, profi
           <p className="text-sm text-fuchsia-200 mb-1">{academy}</p>
         </div>
       </div>
-      <p className="text-sm text-blue-50 mb-1">{bio}</p>
-      <p className="text-sm text-blue-50">Email: {email}</p>
-      <p className="text-sm text-blue-50">Phone: {phoneNumber}</p>
+      <p className="text-sm text-fuchsia-200 mb-1">{bio}</p>
+      <p className="text-sm text-fuchsia-200">Email: {email}</p>
+      <p className="text-sm text-fuchsia-200">Phone: {phoneNumber}</p>
     </article>
   );
 };
@@ -156,15 +157,16 @@ const CoachProfile = ({ coach, onClose }) => {
         <h2 className="text-xl font-bold">{coach.name}</h2>
         <img src={coach.profilePicture} alt={`${coach.name}'s Profile`} className="w-32 h-32 rounded-full mb-4" />
         <p className="text-lg font-semibold">{coach.title}</p>
-        <p className="text-md">{coach.sport}</p>
-        <p className="text-md">{coach.academy}</p>
-        <p className="text-md">{coach.workinghrs}</p>
-        <p className="text-md">{coach.prices}</p>
-        <p className="text-md">{coach.levels}</p>
-        <p className="text-md">{coach.Groups}</p>
-        <p className="text-sm mt-4">{coach.bio}</p>
-        <p className="text-sm">Email: {coach.email}</p>
-        <p className="text-sm">Phone: {coach.phoneNumber}</p>
+        <p className="text-md font-semibold">{coach.sport}</p>
+        <p className="text-md font-semibold">{coach.academy}</p>
+        <p className="text-md text-fuchsia-200">{coach.workinghrs}</p>
+        <p className="text-md text-fuchsia-200">{coach.workinghrs}</p>
+        <p className="text-md text-fuchsia-200">{coach.prices}</p>
+        <p className="text-md text-fuchsia-200">{coach.levels}</p>
+        <p className="text-md text-fuchsia-200">{coach.Groups}</p>
+        <p className="text-sm mt-4 text-fuchsia-200">{coach.bio}</p>
+        <p className="text-sm text-fuchsia-200">Email: {coach.email}</p>
+        <p className="text-sm text-fuchsia-200">Phone: {coach.phoneNumber}</p>
         <SignIn>My Account</SignIn>
         <CoachesSession></CoachesSession>
         
