@@ -151,46 +151,48 @@ Our team of experienced coaches and trainers are dedicated to helping you achiev
       <div className={`${styles.paddingX} ${styles.flexCenter}`}>
         <div className={`${styles.boxWidth}`}>
           <Testimonials />
-          <Footer />
+          
         </div>
       </div>
+      <div className='bg-slate-900'><Footer/></div>
     </div>
   );
 };
 
 const AcademyCard = ({ name, description, image, onClick, sport, dayOfOperating, workingHours, rates, pitches }) => {
   return (
-    <div className="bg-blue-950 text-fuchsia-200 shadow-md rounded p-4 cursor-pointer" onClick={onClick}>
+    <div className="bg-blue-950 text-white shadow-md rounded p-4 cursor-pointer" onClick={onClick}>
       <img src={image} alt={name} className="w-full h-48 object-cover rounded-t" />
-      <h2 className="text-lg  text-fuchsia-700 font-bold mb-2">{name}</h2>
+      <h2 className="text-lg font-bold mb-2">{name}</h2>
       <p className="text-sm mb-2 font-semibold">{sport}</p>
       <p className="text-sm mb-2">{pitches}</p>
       <p className="text-sm mb-2">{description}</p>
       <p className="text-sm mb-2"><strong>Days:</strong> {dayOfOperating}</p>
       <p className="text-sm mb-2"><strong>Working Hours:</strong> {workingHours}</p>
-      <p className="text-sm mb-2 text-blue-800"><strong>Rates:</strong> {rates}</p>
-      
+      <p className="text-sm mb-2"><strong>Rates:</strong> {rates}</p>
     </div>
   );
+
+
 };
 
 const AcademyProfile = ({ academy, onClose, onRegister }) => {
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-80 flex justify-center items-center">
+    <div className="fixed inset-0 bg-black bg-opacity-80 flex justify-center items-center ">
       <div className="bg-blue-950 p-5 rounded shadow-md w-full max-w-lg mx-4">
-        <h2 className="text-xl font-bold">{academy.name}</h2>
+        <h2 className="text-xl text-white font-bold">{academy.name}</h2>
         <img src={academy.image} alt={academy.name} className="w-32 h-32 rounded-full mb-4" />
-        <p className="text-md"><strong>Days:</strong> {academy.dayOfOperating}</p>
-        <p className="text-md"><strong>Working Hours:</strong> {academy.workingHours}</p>
-        <p className="text-md text-blue-800"><strong>Rates:</strong> {academy.rates}</p>
-        <p className="text-md"><strong>Phone:</strong> {academy.phoneNo}</p>
-        <p className="text-md"><strong>Email:</strong> {academy.email}</p>
-        <p className="text-md"><strong>Address:</strong> {academy.address}</p>
-        
-        <br></br>
-        <button onClick={onRegister} className="mt-4 bg-blue-500 text-white p-2 rounded">
+        <p className="text-md text-white"><strong>Days:</strong> {academy.dayOfOperating}</p>
+        <p className="text-md text-white"><strong>Working Hours:</strong> {academy.workingHours}</p>
+        <p className="text-md text-white"><strong>Rates:</strong> {academy.rates}</p>
+        <p className="text-md text-white"><strong>Phone:</strong> {academy.phoneNo}</p>
+        <p className="text-md text-white"><strong>Email:</strong> {academy.email}</p>
+        <p className="text-md text-white"><strong>Address:</strong> {academy.address}</p>
+
+        <button onClick={onRegister} className="mt-4 bg-black text-white p-2 rounded">
           Join Academy
-        </button><br></br>
+        </button>
+        <br></br>
         <button onClick={onClose} className="mt-4 bg-gray-500 text-white p-2 rounded">
           Close
         </button>
@@ -198,6 +200,7 @@ const AcademyProfile = ({ academy, onClose, onRegister }) => {
     </div>
   );
 };
+
 
 const RegistrationForm = ({ academy, registrationData, onChange, onRegister, onClose }) => {
   return (

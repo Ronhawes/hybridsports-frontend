@@ -87,7 +87,7 @@ const CourtsPage = () => {
   };
 
   return (
-    <div className="bg-gray-600 w-full overflow-hidden">
+    <div className="bg-gray-500 w-full overflow-hidden">
       <div className={`${styles.paddingX} ${styles.flexCenter}`}>
         <div className={`${styles.boxWidth}`}>
           <Navbar />
@@ -106,7 +106,7 @@ Explore the future of sports with HybridSports—where innovation meets passion,
 Our team of experienced coaches and trainers are dedicated to helping you achieve your fitness goals.
         </h1><br></br>
         <h1 className="text-3xl font-bold mb-3 text-blue-800">Courts Available</h1>
-        <div className="space-y-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {courts.map((court, index) => (
             <CourtCard
               key={index}
@@ -137,23 +137,19 @@ Our team of experienced coaches and trainers are dedicated to helping you achiev
 
 const CourtCard = ({ name, sport, numberOfCourts, profilePicture, onClick }) => {
   return (
-    <article 
-      className="bg-blue-950  shadow-lg rounded-lg p-6 cursor-pointer hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1"
-      onClick={onClick}
-    >
-      <div className="flex items-center mb-4">
+    <div className="bg-blue-950 text-white shadow-md rounded p-4 cursor-pointer" onClick={onClick}>
         <img 
           src={profilePicture} 
           alt={`${name}'s Profile`} 
-          className="w-24 h-24 rounded-full mr-6"
+          className="w-full h-48 object-cover rounded-t"
         />
         <div>
-          <h2 className="font-poppins font-semibold text-[20px] leading-[32px] text-white">{name}</h2> 
-          <p className="font-poppins font-normal text-[16px] leading-[24px] text-dimWhite">Sport: {sport}</p>
-          <p className="font-poppins font-normal text-[16px] leading-[24px] text-dimWhite"> Courts: {numberOfCourts}</p>
+          <h2 className="text-lg font-bold mb-2">{name}</h2> 
+          <p className="text-sm mb-2 font-semibold">Sport: {sport}</p>
+          <p className="text-sm mb-2 font-semibold"> Courts: {numberOfCourts}</p>
         </div>
       </div>
-    </article>
+    
   );
 };
 

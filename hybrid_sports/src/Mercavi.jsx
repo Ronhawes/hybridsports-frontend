@@ -13,12 +13,15 @@ const Mercavi = () => {
   };
 
   return (
-    <div className="bg-gray-600 w-full overflow-hidden">
+    <div className="bg-gray-500 w-full overflow-hidden">
+      <img src={tour8} alt="racket3" className="w-full object-cover" style={{ height: '5cm', width: '35cm' }} />
       <div className={`${styles.paddingX} ${styles.flexCenter}`}>
         <div className={`${styles.boxWidth}`}>
           <Navbar className="mr-4" /><br /><br /><br />
+          
+          
           <div className="relative rounded-lg overflow-hidden">
-            <img src={tour8} alt="racket3" className="w-full object-cover" style={{ height: '4cm' }} />
+            
             <div className="absolute inset-0 flex items-center justify-left text-black text-3xl font-bold pl-4">
              
             </div>

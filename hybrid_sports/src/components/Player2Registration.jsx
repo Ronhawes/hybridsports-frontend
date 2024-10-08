@@ -1,17 +1,20 @@
 import React, { useState } from "react";
 import SignIn from "./SignIn";
 
-const Player2Registration = ({ additionalClasses = "" }) => {
+const PlayerRegistration = ({ additionalClasses = "" }) => {
   const [showForm, setShowForm] = useState(false);
   const [formData, setFormData] = useState({
     fullnames: '',
     phoneNo: '',
+    sport: '',
+    location: '',
     email: '',
     gender: '',
-    institution: '',
+    role: '',
+    bio: '',
+    profilePicture: null // State to hold the profile picture
   });
   const [result, setResult] = useState(""); // State to hold the submission result
-  const [paymentResult, setPaymentResult] = useState(""); // State to handle payment result
 
   const handleExit = () => {
     setShowForm(false);
@@ -19,7 +22,12 @@ const Player2Registration = ({ additionalClasses = "" }) => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prevState) => ({ ...prevState, [name]: value }));
+    setFormData(prevState => ({ ...prevState, [name]: value }));
+  };
+
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    setFormData(prevState => ({ ...prevState, profilePicture: file })); // Update profile picture state
   };
 
   const handleKeyPress = (e) => {
@@ -28,108 +36,109 @@ const Player2Registration = ({ additionalClasses = "" }) => {
     }
   };
 
-  // Asynchronous form submission to your API
+  // Asynchronous form submission
   const onSubmit = async (event) => {
     event.preventDefault();
     setResult("Sending...");
+    const submissionData = new FormData(event.target);
 
-    const submissionData = {
-      fullnames: formData.fullnames,
-      phoneNo: formData.phoneNo,
-      email: formData.email,
-      gender: formData.gender,
-      institution: formData.institution,
-    };
+    submissionData.append("access_key", "b555f569-3d2d-49a8-8c7b-8a6e652a1722");
+    submissionData.append("profilePicture", formData.profilePicture);
 
-    try {
-      const response = await fetch("http://localhost:2345/users/add", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(submissionData),
-      });
+    const response = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      body: submissionData
+    });
 
-      const data = await response.json();
+    const data = await response.json();
 
-      if (response.ok) {
-        setResult("Registration successful!");
-        event.target.reset();
-      } else {
-        setResult(`Error: ${data.message || 'Something went wrong'}`);
-      }
-    } catch (error) {
-      console.error("Error submitting form:", error);
-      setResult("Error submitting form. Please try again later.");
+    if (data.success) {
+      setResult("Under review");
+      event.target.reset();
+    } else {
+      console.log("Error", data);
+      setResult(data.message);
     }
-  };
-
-  // Function to simulate M-Pesa payment
-  const handlePayment = () => {
-    setPaymentResult("Processing M-Pesa payment...");
-
-    // Simulate M-Pesa payment logic
-    setTimeout(() => {
-      setPaymentResult("M-Pesa payment successful!");
-    }, 2000); // Simulate a delay of 2 seconds for payment processing
   };
 
   return (
     <>
-      {/* Adjust button positioning to relative or within a container */}
       <button
         type="button"
-        className={`py-4 px-6 font-poppins font-medium text-[18px] border border-blue-800 bg-transparent rounded-[10px] hover:text-blue-800 outline-none ${additionalClasses}`}
+        className={`fixed bottom-4 right-4 py-4 px-6 font-poppins font-medium text-[18px] border border-blue-800 bg-transparent rounded-[10px] hover:text-blue-800 outline-none ${additionalClasses}`}
         onClick={() => setShowForm(true)}
       >
         Sign up Now
       </button>
-
       {showForm && (
         <div className="fixed inset-0 bg-black bg-opacity-80 flex justify-center items-center z-50">
           <div className="bg-transparent p-5 rounded shadow-md w-full max-w-lg mx-4 mt-8 max-h-[80vh] overflow-y-auto">
-            <form onSubmit={onSubmit} onKeyPress={handleKeyPress}>
+            {/* Set max height and enable vertical scroll */}
+            <form
+              onSubmit={onSubmit}
+              onKeyPress={handleKeyPress}
+            >
               <h2 className="font-poppins font-semibold text-[32px] text-white leading-[40px] w-full">
-                Register as a Player
+                Register as a Player/Coach/Academy
               </h2>
               <p className="mt-4 text-white p-2 rounded">Please fill in the details below</p>
 
               <label className="mt-4 text-white p-2 rounded">* Full names:</label>
-              <input
-                type="text"
-                name="fullnames"
-                value={formData.fullnames}
-                onChange={handleChange}
-                className=" border p-2 mb-4 w-full"
-                required
+              <input 
+                type="text" 
+                name="fullnames" 
+                value={formData.fullnames} 
+                onChange={handleChange} 
+                className="bg-black border p-2 mb-4 w-full" 
+                required 
               />
 
               <label className="mt-4 text-white p-2 rounded">* Phone No:</label>
-              <input
-                type="tel"
-                name="phoneNo"
-                value={formData.phoneNo}
-                onChange={handleChange}
-                className=" border p-2 mb-4 w-full"
-                required
+              <input 
+                type="tel" 
+                name="phoneNo" 
+                value={formData.phoneNo} 
+                onChange={handleChange} 
+                className="bg-black border p-2 mb-4 w-full" 
+                required 
+              />
+
+              <label className="mt-4 text-white p-2 rounded">* Sport:</label>
+              <input 
+                type="text" 
+                name="sport" 
+                value={formData.sport} 
+                onChange={handleChange} 
+                className="bg-black border p-2 mb-4 w-full" 
+                required 
+              />
+
+              <label className="mt-4 text-white p-2 rounded">* Location:</label>
+              <input 
+                type="text" 
+                name="location" 
+                value={formData.location} 
+                onChange={handleChange} 
+                className="bg-black border p-2 mb-4 w-full" 
+                required 
               />
 
               <label className="mt-4 text-white p-2 rounded">* Email:</label>
-              <input
-                type="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                className=" border p-2 mb-4 w-full"
-                required
+              <input 
+                type="email" 
+                name="email" 
+                value={formData.email} 
+                onChange={handleChange} 
+                className="bg-black border p-2 mb-4 w-full" 
+                required 
               />
 
               <label className="mt-4 text-white p-2 rounded">* Gender:</label>
-              <select
-                name="gender"
-                value={formData.gender}
-                onChange={handleChange}
-                className=" border p-2 mb-4 w-full"
+              <select 
+                name="gender" 
+                value={formData.gender} 
+                onChange={handleChange} 
+                className="bg-black border p-2 mb-4 w-full"
                 required
               >
                 <option value="">Select Gender</option>
@@ -138,22 +147,59 @@ const Player2Registration = ({ additionalClasses = "" }) => {
                 <option value="other">Other</option>
               </select>
 
-              <label className="mt-4 text-white p-2 rounded">* Institution:</label>
-              <input
-                type="text"
-                name="institution"
-                value={formData.institution}
-                onChange={handleChange}
-                className=" border p-2 mb-4 w-full"
+              <label className="mt-4 text-white p-2 rounded">* Role:</label>
+              <select 
+                name="role" 
+                value={formData.role} 
+                onChange={handleChange} 
+                className="bg-black border p-2 mb-4 w-full"
                 required
+              >
+                <option value="">Select Role</option>
+                <option value="coach">Coach</option>
+                <option value="player">Player</option>
+                <option value="academy">Academy</option>
+              </select>
+
+              <label className="mt-4 text-white p-2 rounded">Preferred Payment:</label>
+              <select 
+                name="paymentMethod" 
+                value={formData.paymentMethod} 
+                onChange={handleChange} 
+                className="bg-black border p-2 mb-4 w-full"
+              >
+                <option value="">Select Preferred Payment</option>
+                <option value="mpesa">Mpesa</option>
+                <option value="paypal">Paypal</option>
+                <option value="other">Other</option>
+              </select>
+
+              <label className="mt-4 text-white p-2 rounded">Bio / More Info:</label>
+              <textarea 
+                name="bio"
+                value={formData.bio}
+                onChange={handleChange}
+                className="bg-black border p-2 mb-4 w-full"
+                required
+              />
+
+              {/* Profile Picture Upload */}
+              <label className="mt-4 text-white p-2 rounded">Profile Picture:</label>
+              <input 
+                type="file" 
+                name="profilePicture" 
+                accept="image/*"
+                onChange={handleFileChange}
+                className="bg-black border p-2 mb-4 w-full"
               />
 
               {/* Optional SignIn component */}
               <SignIn />
 
+              {/* Submit button */}
               <button
                 type="submit"
-                className="mt-4 bg-gray-500 text-white p-2 rounded btn-primary"
+                className="mt-4 bg-gray-500 text-white p-2 rounded"
               >
                 Submit
               </button>
@@ -161,6 +207,7 @@ const Player2Registration = ({ additionalClasses = "" }) => {
               {/* Display the result message */}
               <p className="mt-4 text-white">{result}</p>
 
+              {/* Exit button */}
               <button
                 type="button"
                 onClick={handleExit}
@@ -169,22 +216,6 @@ const Player2Registration = ({ additionalClasses = "" }) => {
                 Exit
               </button>
             </form>
-
-            {/* M-Pesa Payment Section */}
-            <div className="mt-8">
-              <h3 className="font-poppins font-semibold text-[24px] text-white">
-                Payment Options
-              </h3>
-              <p className="mt-4 text-white">Pay with M-Pesa:</p>
-              <button
-                className="mt-2 bg-green-500 text-white p-2 rounded w-full"
-                onClick={handlePayment}
-              >
-                Pay with M-Pesa
-              </button>
-              {/* Display the payment result message */}
-              <p className="mt-4 text-white">{paymentResult}</p>
-            </div>
           </div>
         </div>
       )}
@@ -192,4 +223,4 @@ const Player2Registration = ({ additionalClasses = "" }) => {
   );
 };
 
-export default Player2Registration;
+export default PlayerRegistration;

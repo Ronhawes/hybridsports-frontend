@@ -2,7 +2,7 @@ import styles from "./style";
 import { Hero, Navbar, Footer, Testimonials, Events, Stats, SignIn, PlayerRegistration } from "./components";
 
 const EventsMain = () => (
-  <div className="bg-gray-700 w-full overflow-hidden">
+  <div className="bg-gray-500 w-full overflow-hidden">
     {/* Navbar Section */}
     <div className={`${styles.paddingX} ${styles.flexCenter}`}>
       <div className={`${styles.boxWidth}`}>

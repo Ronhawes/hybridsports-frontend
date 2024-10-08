@@ -1,54 +1,18 @@
-import { people01, people02, people03, facebook, instagram, linkedin, twitter, airbnb, binance, coinbase, dropbox, send, shield, star  } from "../assets";
+import { people01, people02, people03, facebook, instagram, linkedin, twitter, airbnb, binance, coinbase, dropbox, send, shield, star, tour10, tour12, tour9  } from "../assets";
 import { Link } from 'react-router-dom';
 import { racket2, racket3, racket } from "../assets";
 
 export const navLinks = [
-  {
-    id: "home",
-    title: "Home",
-    link:"/",
-  },
-  
-  {
-    id: "product",
-    title: "Coaches ",
-    link: "/coaches"
-  },
- 
-  
-  {
-    id: "Mercavi",
-    title: "Events",
-    link: "/Events"
-  },
-  
-  {
-    id: "Mercavi",
-    title: "Players",
-    link: "/Players"
-  },
-  {
-    id: "Mercavi",
-    title: "Courts",
-    link: "/Courts"
-  },
-  {
-    id: "Mercavi",
-    title: "our_services",
-    link: "/Events"
-  },
-  {
-    id: "Mercavi",
-    title: "Tournaments",
-    link: "/Mercavi"
-  },
-  {
-    id: "Academies",
-    title: "Academies",
-    link: "/Academies"
-  }  
-  
+  { id: "home", title: "Home", link: "/" },
+  { id: "coaches", title: "Coaches", link: "/coaches" },
+  { id: "events", title: "Events", link: "/Events" },
+  { id: "players", title: "Players", link: "/Players" },
+  { id: "courts", title: "Courts", link: "/Courts" },
+  { id: "services", title: "Our Services", link: "/Events" },
+  { id: "tournaments", title: "Tournaments", link: "/Mercavi" },
+  { id: "academies", title: "Academies", link: "/Academies" },
 ];
+
 
 export const ongoingEvents = [
   {
@@ -103,26 +67,26 @@ export const feedback = [
   {
     id: "expert-1",
     content:
-      "Looking for a great coach to enhance your skills? Coach John Doe specializes in sports psychology and performance training.",
-    name: "Coach Ann",
-    title: "Sports Psychologist & Performance Coach",
-    img: people01,
+      "I am a gym instructor with a diploma in fitness and wellness. I am based in Ongata Rongai and work 7-8 hours a day, helping clients achieve their fitness goals.",
+    name: "Stella kanyi",
+    title: "Gym Instructor",
+    img: tour12,
   },
   {
     id: "jane smith",
     content:
-      "Bob has competed in several national tennis competitions and has a strong track record.Personal Statement: Tennis is my passion, and I aim to continue improving my personal bests.",
-    name: "Bob Albert",
-    title: "Kenya top seed",
-    img: people02,
+      "With 8 years of experience, I am an ITF Level 1 certified tennis coach, working from 6 AM to 6:30 PM, helping players of all levels.",
+    name: "Petty Andanda",
+    title: "Tennis Coach",
+    img: tour9,
   },
   {
     id: "expert-3",
     content:
       "The High tennis Sports Academy offers a comprehensive training program for aspiring athletes, focusing on skills development and competition preparation. Our tennis academy offers private and group lessons for players of all ages and skill levels.",
-    name: "DROPSHOT_PERFORMANCE",
-    title: "High tennis Academy",
-    img: people03,
+    name: "HYBRIDSPORTSACADEMY",
+    title: "HighbridSports",
+    img: tour10,
   },
 ];
 export const stats = [
@@ -170,34 +134,36 @@ export const footerLinks = [
     ],
   },
   {
-    title: "Community",
+    title: "About Us",
     links: [
       {
-        name: "Help Center",
+        name: "Location: Nairobi, Kenya",
         link: "https://www.hoobank.com/help-center/",
       },
       {
-        name: "Sponsors",
+        name: ["Hybrid Sports Academy (HSA) is a premier sports",
+               "academy specializing in Tennis and Padel player" , 
+               " development. Our mission is to nurture young talent,", 
+               " provide holistic training, and support busy parents ",
+               "in their childs athletic journey."],
+
         link: "https://www.hoobank.com/partners/",
       },
-      {
-        name: "Suggestions",
-        link: "https://www.hoobank.com/suggestions/",
-      },
-      
+     
     ],
   },
   {
-    title: "Partner",
+    title: "Services",
     links: [
       {
-        name: "Our Sponsors",
+        name: "Player Development Program",
         link: "https://www.hoobank.com/our-partner/",
       },
       {
-        name: "Become a Sponsor",
+        name: "Player Management",
         link: "https://www.hoobank.com/become-a-partner/",
       },
+      
     ],
   },
 ];
