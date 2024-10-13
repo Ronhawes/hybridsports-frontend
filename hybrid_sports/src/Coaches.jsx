@@ -87,18 +87,19 @@ const CoachesPage = () => {
         </div>
       </div>
       <div className="container mx-auto p-4 pt-6 md:p-6 lg:p-12">
-      <h1 className="text-black-800 text-3xl font-bold mb-4">Life is Better When We Play Together 🎾</h1>
-        <h1 className="text-base mb-6 max-w-[900px]">
-        At HybridSports, we're revolutionizing the world of sports by bringing together traditional and emerging sports through our cutting-edge platform. As the largest sports booking app and SaaS for venues, we're not just focusing on racket sports—we're bridging the gap between various disciplines, from tennis and padel to new-age hybrid sports that blend the best of both worlds.
+        
+      <h1 className="text-black-800 text-3xl font-bold mb-4 ">Empowering Young Champions, Enhancing Your Lifestyle🎾</h1>
+      <h1 className="text-base mb-6 max-w-[900px] text-center">
+    Experienced, certified coaches (ITF, ATP, and Padel professionals), passionate and dedicated trainers, sports psychologists, and fitness experts provide a comprehensive Player Development Program that includes:
+</h1>
+<ul className="list-disc ml-4 mb-6">
+    <li>Expert coaching for Tennis and Padel (group and private sessions)</li>
+    <li>Customized training plans for beginners and advanced players</li>
+    <li>Fitness and conditioning programs designed to enhance performance</li>
+    <li>Mental performance coaching to improve focus and resilience</li>
+</ul>
 
-With a global footprint in over 49 countries, we've partnered with 4,800 clubs, offering access to 21,000 courts and connecting 3.1 million players. Our community is passionate about exploring new ways to play, blending classic sports with innovative hybrids that challenge the status quo.
-
-Whether you're a fan of traditional racket sports or curious about trying something new, HybridSports is your gateway to a diverse sports experience. Join us as we push the boundaries of sports engagement, connecting players and venues in ways that inspire creativity and competition.
-
-Explore the future of sports with HybridSports—where innovation meets passion, and everyone can find their perfect game.
-Our team of experienced coaches and trainers are dedicated to helping you achieve your fitness goals.
-        </h1><br></br>
-        <h1 className="text-3xl font-bold mb-3 text-blue-800">Coaches Available</h1>
+        <h1 className="text-3xl font-bold mb-3 text-black">Coaches Available</h1>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {coaches.map((coach, index) => (
             <CoachCard
@@ -135,7 +136,7 @@ Our team of experienced coaches and trainers are dedicated to helping you achiev
 
 const CoachCard = ({ name, title, sport, academy, bio, email, phoneNumber, profilePicture, onClick }) => {
   return (
-    <div className="bg-blue-950 text-white shadow-md rounded-lg p-4 cursor-pointer" onClick={onClick}>
+    <div className="bg-black text-white shadow-md rounded-lg p-4 cursor-pointer" onClick={onClick}>
       <img 
         src={profilePicture} 
         alt={`Profile picture of ${name}`} 
@@ -157,22 +158,36 @@ const CoachCard = ({ name, title, sport, academy, bio, email, phoneNumber, profi
 
 const CoachProfile = ({ coach, onClose }) => {
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-80 flex justify-center items-center" onClick={onClose}>
-      <div className="bg-blue-950 p-5 rounded shadow-md w-full max-w-lg mx-4 relative" onClick={(e) => e.stopPropagation()}>
+    <div
+      className="fixed inset-0 bg-black bg-opacity-80 flex justify-center items-center"
+      onClick={onClose}
+      aria-label="Close coach profile"
+    >
+      <div
+        className="bg-blue-950 p-5 rounded shadow-md w-full max-w-lg mx-4 relative"
+        onClick={(e) => e.stopPropagation()} // Prevents closing when clicking inside the modal
+      >
+        <button
+          onClick={onClose}
+          className="absolute top-2 right-2 bg-red-500 text-white p-2 rounded-full"
+          aria-label="Close"
+        >
+          ✕
+        </button>
         <h2 className="text-xl font-bold">{coach.name}</h2>
-        <img src={coach.profilePicture} alt={`Profile picture of ${coach.name}`} className="w-32 h-32 rounded-full mb-4" />
+        <img
+          src={coach.profilePicture}
+          alt={`Profile picture of ${coach.name}`}
+          className="w-32 h-32 rounded-full mb-4"
+        />
         <p className="text-lg font-semibold">{coach.title}</p>
         <p className="text-md font-semibold">{coach.sport}</p>
+        <CoachesSession />
         {/* Other coach details */}
-        
-        <button onClick={onClose} className="mt-4 bg-gray-500 text-white p-2 rounded">
-          Close
-        </button>
       </div>
     </div>
   );
-
-
 };
+
 
 export default CoachesPage;

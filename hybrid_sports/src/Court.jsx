@@ -42,40 +42,7 @@ const CourtsPage = () => {
       blockBooking: "Available",
       profilePicture: court01,
     },
-    {
-      name: "Ruiru Sports Club",
-      sport: "Tennis",
-      numberOfCourts: 8,
-      charges: "$22 per hour",
-      daysOfOperation: [
-        { day: "Monday-Friday", time: "6 AM - 8 PM", availability: "Available" },
-        { day: "Saturday-Sunday", time: "7 AM - 5 PM", availability: "Limited" },
-      ],
-      courtManager: {
-        name: "Paul Baker",
-        contact: "+9988776655",
-        email: "paul@example.com"
-      },
-      blockBooking: "Not Available",
-      profilePicture: court02,
-    },
-    {
-      name: "UoN",
-      sport: "Tennis",
-      numberOfCourts: 7,
-      charges: "$35 per hour",
-      daysOfOperation: [
-        { day: "Monday-Friday", time: "9 AM - 10 PM", availability: "Available" },
-        { day: "Saturday-Sunday", time: "10 AM - 6 PM", availability: "Available" },
-      ],
-      courtManager: {
-        name: "Angela Carter",
-        contact: "+6677889900",
-        email: "angela@example.com"
-      },
-      blockBooking: "Available",
-      profilePicture: court03,
-    },
+    
   ];
 
   const handleCourtClick = (court) => {
@@ -94,8 +61,8 @@ const CourtsPage = () => {
         </div>
       </div>
       <div className="container mx-auto p-4 pt-6 md:p-6 lg:p-12">
-      <h1 className="text-3xl font-bold mb-4 text-blue-800">Life is Better When We Play Together 🎾</h1>
-        <h1 className="text-xl3 sm:text-xl6 leading-xl sm:leading-xl2 font-bold text-black  factorial__headingFontFamily">
+      <h1 className="text-3xl font-bold mb-4 ">Empowering Young Champions, Enhancing Your Lifestyle🎾</h1>
+        <h1 className="text-xl3 sm:text-xl6 leading-xl sm:leading-xl2  text-black  factorial__headingFontFamily">
         At HybridSports, we're revolutionizing the world of sports by bringing together traditional and emerging sports through our cutting-edge platform. As the largest sports booking app and SaaS for venues, we're not just focusing on racket sports—we're bridging the gap between various disciplines, from tennis and padel to new-age hybrid sports that blend the best of both worlds.
 
 With a global footprint in over 49 countries, we've partnered with 4,800 clubs, offering access to 21,000 courts and connecting 3.1 million players. Our community is passionate about exploring new ways to play, blending classic sports with innovative hybrids that challenge the status quo.
@@ -105,7 +72,7 @@ Whether you're a fan of traditional racket sports or curious about trying someth
 Explore the future of sports with HybridSports—where innovation meets passion, and everyone can find their perfect game.
 Our team of experienced coaches and trainers are dedicated to helping you achieve your fitness goals.
         </h1><br></br>
-        <h1 className="text-3xl font-bold mb-3 text-blue-800">Courts Available</h1>
+        <h1 className="text-3xl font-bold mb-3 ">Courts Available</h1>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {courts.map((court, index) => (
             <CourtCard
@@ -137,7 +104,7 @@ Our team of experienced coaches and trainers are dedicated to helping you achiev
 
 const CourtCard = ({ name, sport, numberOfCourts, profilePicture, onClick }) => {
   return (
-    <div className="bg-blue-950 text-white shadow-md rounded p-4 cursor-pointer" onClick={onClick}>
+    <div className="bg-black text-white shadow-md rounded p-4 cursor-pointer" onClick={onClick}>
         <img 
           src={profilePicture} 
           alt={`${name}'s Profile`} 
@@ -157,12 +124,7 @@ const CourtProfile = ({ court, onClose }) => {
   return (
     <div className="fixed inset-0 bg-black bg-opacity-80 flex justify-center items-center p-4">
       <div className="bg-blue-950 p-8 rounded-lg shadow-lg max-w-lg w-full relative">
-        <button 
-          onClick={onClose} 
-          className="absolute top-4 right-4 bg-gray-500 text-white px-4 py-2 rounded"
-        >
-          Close
-        </button>
+      
         <h2 className="font-poppins font-semibold text-[20px] leading-[32px] text-white">{court.name}</h2>
         <img 
           src={court.profilePicture} 
@@ -183,8 +145,10 @@ const CourtProfile = ({ court, onClose }) => {
         <p className="font-poppins font-normal text-[16px] leading-[24px] text-dimWhite">Court Manager: {court.courtManager.name}</p>
         <p className="font-poppins font-normal text-[16px] leading-[24px] text-dimWhite">Phone: {court.courtManager.contact}</p>
         <p className="font-poppins font-normal text-[16px] leading-[24px] text-dimWhite">Email: {court.courtManager.email}</p>
-        <p className="font-poppins font-normal text-[16px] leading-[24px] text-dimWhite"><Button><CoachesSession /></Button> </p>
-        
+        <p className="font-poppins font-normal text-[16px] leading-[24px] text-dimWhite"><CoachesSession /> </p>
+        <button onClick={onClose} className="mt-4 bg-gray-500 text-white p-2 rounded">
+          Close
+        </button>
       </div>
     </div>
   );

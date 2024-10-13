@@ -1,4 +1,4 @@
-import { people01, people02, people03, facebook, instagram, linkedin, twitter, airbnb, binance, coinbase, dropbox, send, shield, star, tour10, tour12, tour9  } from "../assets";
+import { people01, people02, people03, facebook, instagram, linkedin, twitter, airbnb, binance, coinbase, dropbox, send, shield, star, tour10, tour12, tour9, tour11, tour14, tour15  } from "../assets";
 import { Link } from 'react-router-dom';
 import { racket2, racket3, racket } from "../assets";
 
@@ -18,28 +18,12 @@ export const ongoingEvents = [
   {
     id: "event-1",
     
-    title: "Kenya open",
-    date: "August 20, 2024",
-    location: "Paris,France",
-    Image: racket2 
+    title: "National Junior circuit ",
+    date: "26th october",
+    location: "Ace Padel , Aghakhan",
+    Image: tour15 
   },
-  {
-    id: "event-2",
-    
-    title: "Kusa women",
-    date: "September 15, 2024",
-    location: "12-13 November",
-    Image: racket
-  },
-  {
-    id: "event-3",
-    
-    title: "MERCAVI TOUR",
-    date: "October 5, 2024",
-    location: "public service, upperhill",
-    Link:'/Mercavi',
-    Image: racket3
-  },
+ 
 ]; 
 
 export const features = [
@@ -70,7 +54,7 @@ export const feedback = [
       "I am a gym instructor with a diploma in fitness and wellness. I am based in Ongata Rongai and work 7-8 hours a day, helping clients achieve their fitness goals.",
     name: "Stella kanyi",
     title: "Gym Instructor",
-    img: tour12,
+    img: tour14,
   },
   {
     id: "jane smith",
@@ -78,15 +62,15 @@ export const feedback = [
       "With 8 years of experience, I am an ITF Level 1 certified tennis coach, working from 6 AM to 6:30 PM, helping players of all levels.",
     name: "Petty Andanda",
     title: "Tennis Coach",
-    img: tour9,
+    img: tour11,
   },
   {
     id: "expert-3",
     content:
-      "The High tennis Sports Academy offers a comprehensive training program for aspiring athletes, focusing on skills development and competition preparation. Our tennis academy offers private and group lessons for players of all ages and skill levels.",
+      "The High tennis Sports Academy offers a comprehensive training program for aspiring athletes. ",
     name: "HYBRIDSPORTSACADEMY",
     title: "HighbridSports",
-    img: tour10,
+    img: tour12,
   },
 ];
 export const stats = [

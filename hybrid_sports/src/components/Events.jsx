@@ -48,18 +48,18 @@ const EventCard = ({ title, date, location, Image }) => {
       {/* Full-screen Modal for Enlarged Image */}
       {isModalOpen && (
         <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-80 flex justify-center items-center z-50">
-          <div className="relative w-full max-w-4xl h-full">
+          <div className="relative w-full max-w-4xl h-[90vh]"> {/* Added height limit */}
             <img
               src={Image}
               alt="Enlarged Court"
-              className="object-cover w-full h-full rounded-[20px]"
+              className="object-contain w-full h-full rounded-[20px]"
             />
-            {/* Exit Button */}
-            <button
-              className="absolute top-4 right-4 bg-red-500 text-white py-2 px-4 rounded-full"
+            {/* Close Button (X) */}
+            <button 
+              className="absolute top-4 right-4 bg-gray-500 text-white py-2 px-4 rounded-full"
               onClick={handleCloseModal}
             >
-              Exit
+              X
             </button>
           </div>
         </div>

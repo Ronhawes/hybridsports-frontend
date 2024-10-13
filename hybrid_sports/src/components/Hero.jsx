@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import styles from "../style";
-import { discount, racket, racket2, racket3 } from "../assets"; // Import racket images
+import { discount, racket, racket2, racket3,tour13 } from "../assets"; // Import racket images
 import { Link } from 'react-router-dom';
 import PlayerRegistration from './PlayerRegistration';
 import Content from './content';
@@ -9,8 +9,8 @@ const Hero = () => {
   const [currentImage, setCurrentImage] = useState(0);
   const [currentPhraseIndex, setCurrentPhraseIndex] = useState(0);
 
-  const images = [racket, racket2, racket3];
-  const phrases = ["play padel", "swim with", "play tennis"];
+  const images = [tour13,  racket3];
+  const phrases = ["play padel",  "play tennis"];
 
   useEffect(() => {
     const imageInterval = setInterval(() => {
@@ -74,7 +74,7 @@ const Hero = () => {
       </div>
 
       <div className={`ss:hidden ${styles.flexCenter}`}></div>
-      <Content />
+      
     </section>
   );
 };

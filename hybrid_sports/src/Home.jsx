@@ -1,6 +1,7 @@
 import styles from "./style";
 import {Hero, Navbar, Footer,Testimonials, Events, Stats,PlayerRegistration} from "./components"
 import {SignIn } from "./components"
+import Content from "./components/content";
 
 const App = () => (
   <div className="bg-gray-600 w-full overflow-hidden">
@@ -13,6 +14,7 @@ const App = () => (
     <div className={` ${styles.flexStart}`}>
       <div className={`${styles.boxWidth}`}>
         <Hero/>
+        <Content/>
       </div>
     </div>
     <div className={` ${styles.paddingX} ${styles.flexCenter}`}>

@@ -14,20 +14,7 @@ const AcademiesPage = () => {
   });
 
   const academies = [
-    {
-      name: "SOCCER",
-      description: "Our  academy offers training programs for players of all ages and skill levels.",
-      image: soccer,
-      link: "/academies/football",
-      sport: "soccer",
-      dayOfOperating: "Monday-Saturday",
-      workingHours: "8:00 AM - 6:00 PM",
-      rates: "$20 per hour",
-      phoneNo: "+2547891828483",
-      email: "soccer@gmail.com",
-      address: "P.O. Box 12345",
-      pitches: "5 pitches available"
-    },
+    
     {
       name: "PADEL",
       description: "Our  academy provides training programs focused on skill development and team play.",
@@ -56,20 +43,7 @@ const AcademiesPage = () => {
       address: "P.O. Box 20000",
       pitches: "8 courts available"
     },
-    {
-      name: "SWIMMING",
-      description: "Our  academy offers training programs for swimmers of all ages and skill levels.",
-      image: racket2,
-      link: "/academies/swim",
-      sport: "swimming",
-      dayOfOperating: "Monday-Saturday",
-      workingHours: "6:00 AM - 9:00 PM",
-      rates: "$15 per hour",
-      phoneNo: "+2547891828483",
-      email: "hybridsports@gmail.com",
-      address: "P.O. Box 272600",
-      pitches: "A full pool available"
-    }
+  
   ];
 
   const handleAcademyClick = (academy) => {
@@ -100,9 +74,9 @@ const AcademiesPage = () => {
         </div>
       </div>
       <div className="container mx-auto p-4 pt-6 md:p-6 lg:p-12">
-        <h1 className="text-blue-800 text-3xl font-bold mb-4">HYBRID SPORTS ACADEMY</h1>
-        <h1 className="text-3xl font-bold mb-4 text-blue-800">We offer the following sports 🎾</h1>
-        <h1 className="text-xl3 sm:text-xl4 leading-xl sm:leading-xl2 font-bold text-black factorial__headingFontFamily">
+        
+        <h1 className="text-3xl font-bold mb-4 ">Empowering Young Champions, Enhancing Your Lifestyle🎾</h1>
+        <h1 className=" sm:text-xl4 leading-xl sm:leading-xl2  text-black factorial__headingFontFamily">
         At HybridSports, we're revolutionizing the world of sports by bringing together traditional and emerging sports through our cutting-edge platform. As the largest sports booking app and SaaS for venues, we're not just focusing on racket sports—we're bridging the gap between various disciplines, from tennis and padel to new-age hybrid sports that blend the best of both worlds.
 
 With a global footprint in over 49 countries, we've partnered with 4,800 clubs, offering access to 21,000 courts and connecting 3.1 million players. Our community is passionate about exploring new ways to play, blending classic sports with innovative hybrids that challenge the status quo.
@@ -161,7 +135,7 @@ Our team of experienced coaches and trainers are dedicated to helping you achiev
 
 const AcademyCard = ({ name, description, image, onClick, sport, dayOfOperating, workingHours, rates, pitches }) => {
   return (
-    <div className="bg-blue-950 text-white shadow-md rounded p-4 cursor-pointer" onClick={onClick}>
+    <div className="bg-black text-white shadow-md rounded p-4 cursor-pointer" onClick={onClick}>
       <img src={image} alt={name} className="w-full h-48 object-cover rounded-t" />
       <h2 className="text-lg font-bold mb-2">{name}</h2>
       <p className="text-sm mb-2 font-semibold">{sport}</p>

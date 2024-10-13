@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"; // Make sure to import this
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
-import { close, menu, tour13 } from "../assets";
+import { close, menu, tour12, tour13 } from "../assets";
 import { navLinks } from "../constants";
 import { Link } from 'react-router-dom';
 
@@ -35,8 +35,8 @@ const Navbar = () => {
   return (
     <nav className="fixed top-0 left-0 w-full flex py-6 justify-between items-center navbar z-50 bg-transparent">
       <div className="flex items-center justify-center">
-        <img src={tour13} alt="Tournament Icon" className="text-blue-800 mr-2 w-12 h-12" />
-        <span className="text-dimWhite font-bold text-xl">Hybrid Sports Academy</span>
+        <img src={tour12} alt="Tournament Icon" className="text-blue-800 mr-2 w-36 h-24 rounded-2xl" />
+        <span className=" font-bold text-xl">Hybrid Sports </span>
       </div>
 
       <div className="flex items-center space-x-4">

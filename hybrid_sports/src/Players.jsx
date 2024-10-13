@@ -294,8 +294,8 @@ const PlayersPage = () => {
 
       <div className="container mx-auto p-4 pt-6 md:p-6 lg:p-12">
         <h1 className="text-black-800 text-3xl font-bold mb-4">
-          Life is Better When We Play Together 🎾
-        </h1>
+        Empowering Young Champions, Enhancing Your Lifestyle🎾
+        </h1> <br />
         <p className="text-base mb-6 max-w-[900px]">Player Management:</p>
         <ul className="list-disc pl-5 mb-6">
           <li>Tournament registration and scheduling</li>
@@ -335,7 +335,7 @@ const PlayersPage = () => {
 
 const PlayerCard = ({ name, age, gender, sport, nationality, profilePicture, onClick }) => {
   return (
-    <div className="bg-blue-950 text-white shadow-md rounded p-4 cursor-pointer" onClick={onClick}>
+    <div className="bg-black text-white shadow-md rounded p-4 cursor-pointer" onClick={onClick}>
       <img
         src={profilePicture}
         alt={`Profile picture of ${name}`}

@@ -1,22 +1,23 @@
 import React, { useState, useRef, useEffect } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowRight, faArrowUp } from '@fortawesome/free-solid-svg-icons';
+import { faArrowRight, faXmark  } from '@fortawesome/free-solid-svg-icons';
 import { court } from "../assets"; // Ensure this imports your court image correctly
 
 const Button = () => {
   const [showForm, setShowForm] = useState(false);
   const [showCourtImage, setShowCourtImage] = useState(false);
   const [formData, setFormData] = useState({
-    fullName: '',
-    idNumber: '',
-    email: '',
+    fullNames: '',
+    yearOfBirth: '',
+    age: '',
+    partner: '',
+    coach: '',
     phoneNumber: '',
     mpesaPhoneNumber: '',
     paymentMethod: '',
   });
   const [ticketCount, setTicketCount] = useState(1);
   const [agreedToTerms, setAgreedToTerms] = useState(false);
-  const [wantsOffers, setWantsOffers] = useState(false);
   const [formErrors, setFormErrors] = useState({});
 
   const TICKET_PRICE = 2000;
@@ -56,7 +57,6 @@ const Button = () => {
   const handleCheckboxChange = (e) => {
     const { name, checked } = e.target;
     if (name === 'terms') setAgreedToTerms(checked);
-    if (name === 'offers') setWantsOffers(checked);
   };
 
   const scrollTo = (position) => {
@@ -91,15 +91,15 @@ const Button = () => {
       </div>
 
       {showCourtImage && (
-        <div className="fixed inset-0 bg-black bg-opacity-80 flex justify-center items-center">
-          <div className="bg-black text-white p-5 rounded shadow-md relative w-full h-full max-w-4xl">
+        <div className="fixed inset-0 bg-black bg-opacity-80 flex justify-center items-center z-50">
+          <div className="bg-black text-white p-5 rounded shadow-md relative w-full h-full max-w-4xl overflow-auto">
             <button
               type="button"
               onClick={handleExit}
-              className="absolute top-2 right-2 bg-gray-600 text-white p-2 rounded-full"
-              style={{ zIndex: 10 }}
+              className="absolute top-4 right-4 bg-gray-600 text-white p-2 rounded-full z-50"
             >
-              <FontAwesomeIcon icon={faArrowUp} />
+             
+             <FontAwesomeIcon icon={faXmark} size="2x" />  {/* Use the correct icon */}
             </button>
 
             <form
@@ -107,42 +107,64 @@ const Button = () => {
               onSubmit={(e) => e.preventDefault()}
               ref={formRef}
             >
-              <h2 className="font-poppins font-semibold text-[24px] text-white">Book Your Ticket</h2>
+              <h2 className="font-poppins font-semibold text-[24px] text-white">Sign up for the Event</h2>
 
               <label className="mt-4 text-white">Full names:</label>
               <input
                 type="text"
-                name="fullName"
-                value={formData.fullName}
+                name="fullNames"
+                value={formData.fullNames}
                 onChange={handleChange}
                 className="bg-black border p-2 mb-4 w-full text-white"
                 required
               />
-              {formErrors.fullName && <p className="text-red-500">{formErrors.fullName}</p>}
+              {formErrors.fullNames && <p className="text-red-500">{formErrors.fullNames}</p>}
 
-              <label className="mt-4 text-white">ID Number:</label>
+              <label className="mt-4 text-white">Birth year:</label>
               <input
                 type="text"
-                name="idNumber"
-                value={formData.idNumber}
+                name="yearOfBirth"
+                value={formData.yearOfBirth}
                 onChange={handleChange}
                 className="bg-black border p-2 mb-4 w-full text-white"
                 required
               />
-              {formErrors.idNumber && <p className="text-red-500">{formErrors.idNumber}</p>}
+              {formErrors.yearOfBirth && <p className="text-red-500">{formErrors.yearOfBirth}</p>}
 
-              <label className="mt-4 text-white">Email Address:</label>
+              <label className="mt-4 text-white">Age:</label>
               <input
-                type="email"
-                name="email"
-                value={formData.email}
+                type="text"
+                name="age"
+                value={formData.age}
                 onChange={handleChange}
                 className="bg-black border p-2 mb-4 w-full text-white"
                 required
               />
-              {formErrors.email && <p className="text-red-500">{formErrors.email}</p>}
+              {formErrors.age && <p className="text-red-500">{formErrors.age}</p>}
 
-              <label className="mt-4 text-white">Phone Number:</label>
+              <label className="mt-4 text-white">Partner:</label>
+              <input
+                type="text"
+                name="partner"
+                value={formData.partner}
+                onChange={handleChange}
+                className="bg-black border p-2 mb-4 w-full text-white"
+                required
+              />
+              {formErrors.partner && <p className="text-red-500">{formErrors.partner}</p>}
+
+              <label className="mt-4 text-white">Coach/Academy:</label>
+              <input
+                type="text"
+                name="coach"
+                value={formData.coach}
+                onChange={handleChange}
+                className="bg-black border p-2 mb-4 w-full text-white"
+                required
+              />
+              {formErrors.coach && <p className="text-red-500">{formErrors.coach}</p>}
+
+              <label className="mt-4 text-white">Phone number:</label>
               <input
                 type="text"
                 name="phoneNumber"
@@ -163,7 +185,6 @@ const Button = () => {
               >
                 <option value="">Select a payment method</option>
                 <option value="mpesa">Mpesa</option>
-                <option value="credit_card">Credit Card</option>
               </select>
               {formErrors.paymentMethod && <p className="text-red-500">{formErrors.paymentMethod}</p>}
 
@@ -196,7 +217,6 @@ const Button = () => {
                 {formErrors.agreedToTerms && <p className="text-red-500">{formErrors.agreedToTerms}</p>}
               </div>
 
-             
               <div className="mt-4 text-white flex items-center">
                 <button
                   type="button"
@@ -216,26 +236,19 @@ const Button = () => {
               </div>
 
               <div className="mt-4 text-white">
-                Total Price: {totalPrice} KSh
+                Total Price: {totalPrice}
               </div>
 
-              <div className="mt-4 flex justify-between">
-                <button
-                  type="button"
-                  onClick={handleExit}
-                  className="bg-gray-600 text-white py-2 px-4 rounded"
-                >
-                  Close
-                </button>
-                <button
-                  type="button"
-                  onClick={handleSubmit}
-                  className="bg-blue-500 text-white py-2 px-4 rounded"
-                >
-                  Submit
-                </button>
-              </div>
+              <button
+                type="button"
+                className="bg-blue-500 text-white py-2 px-4 mt-4 rounded"
+                onClick={handleSubmit}
+              >
+                Submit
+              </button>
             </form>
+
+            
           </div>
         </div>
       )}
