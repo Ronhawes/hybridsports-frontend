@@ -1,6 +1,6 @@
 import { useState } from "react";
 import styles from "./style";
-import { Navbar, Footer, Testimonials, SignIn,Academies, PlayerRegistration} from "./components";
+import { Navbar, Footer, Testimonials, SignIn,Academies, Academyregistration, } from "./components";
 import { soccer, racket, racket2, racket3 } from './assets';
 
 const AcademiesPage = () => {
@@ -88,7 +88,7 @@ Our team of experienced coaches and trainers are dedicated to helping you achiev
         </h1>
         <div className={`${styles.paragraph} max-w-[470px] mt-5`}>   
           <div className="flex  mt-50">
-            <PlayerRegistration/>
+            
         
           </div>
         </div>
@@ -113,7 +113,7 @@ Our team of experienced coaches and trainers are dedicated to helping you achiev
       )}
 
       {showRegistrationForm && (
-        <RegistrationForm
+        <Academyregistration
           academy={selectedAcademy}
           registrationData={registrationData}
           onChange={handleRegistrationChange}
@@ -176,74 +176,60 @@ const AcademyProfile = ({ academy, onClose, onRegister }) => {
 };
 
 
-const RegistrationForm = ({ academy, registrationData, onChange, onRegister, onClose }) => {
-  return (
-    <div className="fixed inset-0 bg-black bg-opacity-80 flex justify-center items-center">
-      <div className="bg-yellow-100  p-5 rounded shadow-md w-full max-w-lg mx-4">
-        <h2 className="text-xl font-bold">Register for {academy.name}</h2>
 
-        <label className="mt-4 text-gray-700">Name:</label>
-        <input 
-          type="text" 
-          name="name" 
-          value={registrationData.name} 
-          onChange={onChange} 
-          className="bg-gray-200 border p-2 mb-4 w-full" 
-          required 
-        />
 
-        <label className="mt-4 text-gray-700">Email:</label>
-        <input 
-          type="email" 
-          name="email" 
-          value={registrationData.email} 
-          onChange={onChange} 
-          className="bg-gray-200 border p-2 mb-4 w-full" 
-          required 
-        />
 
-        <label className="mt-4 text-gray-700">Phone Number:</label>
-        <input 
-          type="tel" 
-          name="phoneNumber" 
-          value={registrationData.phoneNumber} 
-          onChange={onChange} 
-          className="bg-gray-200 border p-2 mb-4 w-full" 
-          required 
-        />
 
-        <label className="mt-4 text-gray-700">Payment Method:</label>
-        <select 
-          name="paymentMethod" 
-          value={registrationData.paymentMethod} 
-          onChange={onChange} 
-          className="bg-gray-200 border p-2 mb-4 w-full" 
-          required 
-        >
-          <option value="">Select a payment method</option>
-          <option value="Credit Card">Credit Card</option>
-          <option value="PayPal">PayPal</option>
-          <option value="Mobile Money">Mobile Money</option>
-        </select>
 
-        <button
-          type="button"
-          onClick={onRegister}
-          className="mt-4 bg-green-500 text-white p-2 rounded"
-        >
-          Register
-        </button><br></br>
 
-        <button
-          type="button"
-          onClick={onClose}
-          className="mt-4 bg-gray-500 text-white p-2 rounded"
-        >
-          Close
-        </button>
-      </div>
-    </div>
-  );
-};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 export default AcademiesPage;

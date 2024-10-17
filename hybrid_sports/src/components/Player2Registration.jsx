@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import SignIn from "./SignIn";
 
-const PlayerRegistration = ({ additionalClasses = "" }) => {
+const Player2Registration = ({ additionalClasses = "" }) => {
   const [showForm, setShowForm] = useState(false);
   const [formData, setFormData] = useState({
     fullnames: '',
@@ -161,18 +161,18 @@ const PlayerRegistration = ({ additionalClasses = "" }) => {
                 <option value="academy">Academy</option>
               </select>
 
-              <label className="mt-4 text-white p-2 rounded">Preferred Payment:</label>
-              <select 
-                name="paymentMethod" 
-                value={formData.paymentMethod} 
-                onChange={handleChange} 
-                className="bg-black border p-2 mb-4 w-full"
-              >
-                <option value="">Select Preferred Payment</option>
-                <option value="mpesa">Mpesa</option>
-                <option value="paypal">Paypal</option>
-                <option value="other">Other</option>
-              </select>
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
 
               <label className="mt-4 text-white p-2 rounded">Bio / More Info:</label>
               <textarea 
@@ -183,15 +183,15 @@ const PlayerRegistration = ({ additionalClasses = "" }) => {
                 required
               />
 
-              {/* Profile Picture Upload */}
-              <label className="mt-4 text-white p-2 rounded">Profile Picture:</label>
-              <input 
-                type="file" 
-                name="profilePicture" 
-                accept="image/*"
-                onChange={handleFileChange}
-                className="bg-black border p-2 mb-4 w-full"
-              />
+              
+              
+              
+              
+              
+              
+              
+              
+              
 
               {/* Optional SignIn component */}
               <SignIn />
@@ -223,4 +223,4 @@ const PlayerRegistration = ({ additionalClasses = "" }) => {
   );
 };
 
-export default PlayerRegistration;
+export default Player2Registration;

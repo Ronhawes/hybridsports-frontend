@@ -51,6 +51,7 @@ import tour11 from './tour11.png'
 import tour12 from './tour12.png'
 import tour13 from './tour13.png'
 import video1 from './video1.mp4'
+import video2 from './video2.mp4'
 import tour14 from './tour14.png'
 import tour15 from './tour15.png'
 
@@ -94,6 +95,6 @@ export {
   court01,
   court02,
   court03,
-  video1,
+  video1,video2,
   tour1,tour2,tour3,tour4,tour5,tour6,tour7,tour8,tour9,tour10,tour11,tour12,tour13, tour14, tour15
 };

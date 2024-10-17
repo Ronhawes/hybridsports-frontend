@@ -12,7 +12,7 @@ import EventRegistration from "./EventRegistration";
 import Stats from "./Stats";
 import SignIn from "./SignIn";
 import SignUp from "./SignUp";
-
+import Academyregistration from "./Academyregistration";
 import SignInPage from "./SignInPage";
 import Ranking from "./Ranking";
 import NextEvents from "./NextEvents";
@@ -23,6 +23,7 @@ import PlayerRegistration from "./PlayerRegistration";
 import Player2Registration from "./Player2Registration";
 import CourtRegistration from "./CourtRegistration";
 import BlockBooking from "./BlockBooking";
+import Login from "./Login";
 
 export {
   Navbar,
@@ -40,7 +41,7 @@ export {
   SignIn,
   SignUp,
   SignInPage,
-  
+  Academyregistration,
   Ranking,
   NextEvents,
   Results,
@@ -49,6 +50,7 @@ export {
   PlayerRegistration,
   Player2Registration,
   CourtRegistration,
-  BlockBooking
+  BlockBooking,
+  Login
   
 };

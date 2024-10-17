@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styles from '../style'; // Ensure you have imported your styles
 import { tour3, video1 } from '../assets'; // Import the image and video assets
+import Player2Registration from './Player2Registration';
 
 function Hero2() {
   const [isVideoPlaying, setIsVideoPlaying] = useState(false); // State to control video playback
@@ -66,6 +67,7 @@ function Hero2() {
             The tournament offers seating, parking, services, and facilities for customers with reduced mobility, as well as those with young children and other specific needs.
             <br /><br />
             For tickets and on-site support, please contact us at +254794906146.
+          
           </div>
         </div>
       </div>

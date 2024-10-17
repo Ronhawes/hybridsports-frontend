@@ -156,21 +156,21 @@ const CoachSessionsButton = () => {
                 ))}
               </div>
 
-              <label className="mt-4 text-white">Payment Method:</label>
-              <select
-                name="paymentMethod"
-                value={formData.paymentMethod}
-                onChange={handleChange}
-                className="bg-green-500 border p-2 mb-4 w-full"
-                required
-              >
-                <option value="" disabled>Select your payment method</option>
-              
-                <option value="paypal">Mpesa</option>
-                <option value="paypal">Paypal</option>
-                <option value="paypal">other</option>
-                
-              </select>
+             
+             
+             
+             
+             
+             
+             
+             
+             
+             
+             
+             
+             
+             
+             
 
               <button
                 type="button"

@@ -1,6 +1,6 @@
 import styles from "./style";
 import { useState } from "react";
-import { Ranking, NextEvents, Navbar, Footer, Hero2, Testimonials, Player2Registration } from './components';
+import { Ranking, NextEvents, Navbar, Footer, Hero2, Testimonials, Player2Registration ,PlayerRegistration} from './components';
 import { tour1, tour2, tour3, tour4 , tour8, video1} from "./assets";
 import { quotes } from "./assets";
 

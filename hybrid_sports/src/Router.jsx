@@ -6,6 +6,7 @@ import Mercavi from './Mercavi';
 import EventsMain from './EventsMain';
 import PlayersPage from './Players';
 import CourtsPage from './Court';
+import Admin from './admin';
 
 const Router = () => {
   return (
@@ -14,6 +15,7 @@ const Router = () => {
         <Route path="/" element={<Home />} />
         <Route path="/coaches" element={<CoachesPage />} />
         <Route path="/Academies" element={<Academies />} />
+        <Route path="/Admin" element={<Admin />} />
         
         <Route path="/Mercavi" element={<Mercavi />} />
         <Route path="/Events" element={<EventsMain />} />

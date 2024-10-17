@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import styles from "./style";
-import { Navbar, Footer, Testimonials, CoachRegistration, SignIn, CoachesSession, PlayerRegistration } from "./components";
-import { people01, people02, people03, tour10, tour11, tour12, tour14 } from './assets';
+import { Navbar, Footer, Testimonials, CoachRegistration, SignIn, CoachesSession, Player2Registration } from "./components";
+import { people01, people02, people03, tour10, tour11, tour12, tour14 ,video2} from './assets';
 
 
 const CoachesPage = () => {
@@ -21,6 +21,7 @@ const CoachesPage = () => {
       prices: "N/A",
       levels: "All levels",
       Groups: "individual and group sessions",
+     
       sessions: [
         { date: "2024-08-16", time: "10:00 AM - 11:00 AM" },
         { date: "2024-08-17", time: "2:00 PM - 3:00 PM" },
@@ -34,11 +35,12 @@ const CoachesPage = () => {
       bio: "I am a gym instructor with a diploma in fitness and wellness. I am based in Ongata Rongai and work 7-8 hours a day, helping clients achieve their fitness goals.",
       email: "stellakanyi@gmail.com",
       phoneNumber: "+254708906644",
-      profilePicture: tour14, // Replace with Stella's profile picture
+      profilePicture: tour14,
       workinghrs: "7-8 hours",
       prices: "N/A",
       levels: "All levels",
       Groups: "individual and group sessions",
+      video: video2
     },
     {
       name: "Petty Andanda",
@@ -48,7 +50,7 @@ const CoachesPage = () => {
       bio: "With 8 years of experience, I am an ITF Level 1 certified tennis coach, working from 6 AM to 6:30 PM, helping players of all levels.",
       email: "pettyandanda@gmail.com",
       phoneNumber: "+254111769929",
-      profilePicture: tour11, // Replace with Petty's profile picture
+      profilePicture: tour11,
       workinghrs: "6 AM - 6:30 PM",
       prices: "N/A",
       levels: "All levels",
@@ -62,7 +64,7 @@ const CoachesPage = () => {
       bio: "With 5 years of coaching experience and ITF Play and Stay certification, I work with players at all levels. My sessions run from early morning to evening.",
       email: "activitytennis@gmail.com",
       phoneNumber: "+254717391077",
-      profilePicture: tour10, // Replace with Peter's profile picture
+      profilePicture: tour10,
       workinghrs: "6:30 AM - 7:00 PM Daily",
       prices: "N/A",
       levels: "All levels",
@@ -83,21 +85,20 @@ const CoachesPage = () => {
       <div className={`${styles.paddingX} ${styles.flexCenter}`}>
         <div className={`${styles.boxWidth}`}>
           <Navbar />
-          
         </div>
       </div>
       <div className="container mx-auto p-4 pt-6 md:p-6 lg:p-12">
         
-      <h1 className="text-black-800 text-3xl font-bold mb-4 ">Empowering Young Champions, Enhancing Your Lifestyle🎾</h1>
-      <h1 className="text-base mb-6 max-w-[900px] text-center">
-    Experienced, certified coaches (ITF, ATP, and Padel professionals), passionate and dedicated trainers, sports psychologists, and fitness experts provide a comprehensive Player Development Program that includes:
-</h1>
-<ul className="list-disc ml-4 mb-6">
-    <li>Expert coaching for Tennis and Padel (group and private sessions)</li>
-    <li>Customized training plans for beginners and advanced players</li>
-    <li>Fitness and conditioning programs designed to enhance performance</li>
-    <li>Mental performance coaching to improve focus and resilience</li>
-</ul>
+        <h1 className="text-black-800 text-3xl font-bold mb-4 ">Empowering Young Champions, Enhancing Your Lifestyle🎾</h1>
+        <h1 className="text-base mb-6 max-w-[900px] text-center">
+          Experienced, certified coaches (ITF, ATP, and Padel professionals), passionate and dedicated trainers, sports psychologists, and fitness experts provide a comprehensive Player Development Program that includes:
+        </h1>
+        <ul className="list-disc ml-4 mb-6">
+          <li>Expert coaching for Tennis and Padel (group and private sessions)</li>
+          <li>Customized training plans for beginners and advanced players</li>
+          <li>Fitness and conditioning programs designed to enhance performance</li>
+          <li>Mental performance coaching to improve focus and resilience</li>
+        </ul>
 
         <h1 className="text-3xl font-bold mb-3 text-black">Coaches Available</h1>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -105,13 +106,14 @@ const CoachesPage = () => {
             <CoachCard
               key={index}
               {...coach}
-              onClick={() => handleCoachClick(coach)} // Pass the coach data to the click handler
+              onPictureClick={() => handleCoachClick(coach)} // Pass the coach data to the click handler for picture
+              onCardClick={() => handleCoachClick(coach)} // Pass the coach data to the click handler for the rest of the card
             />
           ))}
         </div>
         <div className={`${styles.paragraph} max-w-[470px] mt-5`}>   
           <div className="flex  mt-50">
-            <PlayerRegistration/>
+            <Player2Registration/>
           </div>
         </div>
       </div>
@@ -126,7 +128,6 @@ const CoachesPage = () => {
       <div className={`${styles.paddingX} ${styles.flexCenter}`}>
         <div className={`${styles.boxWidth}`}>
           <Testimonials />
-          
         </div>
       </div>
       <div className='bg-slate-900'><Footer/></div>
@@ -134,20 +135,49 @@ const CoachesPage = () => {
   );
 };
 
-const CoachCard = ({ name, title, sport, academy, bio, email, phoneNumber, profilePicture, onClick }) => {
+const CoachCard = ({ name, title, sport, academy, bio, email, phoneNumber, profilePicture, onPictureClick, onCardClick, video }) => {
+  const [isVideoPlaying, setIsVideoPlaying] = useState(false);
+
+  const handlePictureClick = (e) => {
+    e.stopPropagation(); // Prevent the card click event from triggering
+    if (video) {
+      setIsVideoPlaying(true); // Only play video if it's available
+    } else {
+      onCardClick(); // Show the profile if no video is available
+    }
+  };
+
   return (
-    <div className="bg-black text-white shadow-md rounded-lg p-4 cursor-pointer" onClick={onClick}>
-      <img 
-        src={profilePicture} 
-        alt={`Profile picture of ${name}`} 
-        className="w-full h-48 object-cover rounded-t-md mb-4" 
-      />
-      
+    <div
+      className="bg-black text-white shadow-md rounded-lg p-4 cursor-pointer"
+      onClick={onCardClick} // Click handler for the rest of the card
+    >
+      {!isVideoPlaying && video ? (
+        <img
+          src={profilePicture}
+          alt={`Profile picture of ${name}`}
+          className="w-full h-48 object-cover rounded-t-md mb-4"
+          onClick={handlePictureClick} // Start video when picture is clicked
+        />
+      ) : isVideoPlaying && video ? (
+        <video
+          src={video}
+          controls
+          autoPlay
+          className="w-full h-48 object-cover rounded-t-md mb-4"
+        />
+      ) : (
+        <img
+          src={profilePicture}
+          alt={`Profile picture of ${name}`}
+          className="w-full h-48 object-cover rounded-t-md mb-4"
+          onClick={onCardClick} // If no video, clicking the picture shows profile
+        />
+      )}
       <h2 className="text-lg font-bold mb-2">{name}</h2>
       <p className="text-sm font-semibold mb-2">{title}</p>
       <p className="text-sm mb-2">{sport}</p>
       <p className="text-sm mb-2">{academy}</p>
-
       <p className="text-sm mb-2">{bio}</p>
       <p className="text-sm mb-2">Email: {email}</p>
       <p className="text-sm mb-2">Phone: {phoneNumber}</p>
@@ -155,8 +185,13 @@ const CoachCard = ({ name, title, sport, academy, bio, email, phoneNumber, profi
   );
 };
 
-
 const CoachProfile = ({ coach, onClose }) => {
+  const [isVideoPlaying, setIsVideoPlaying] = useState(false);
+
+  const handleVideoClick = () => {
+    setIsVideoPlaying(true);
+  };
+
   return (
     <div
       className="fixed inset-0 bg-black bg-opacity-80 flex justify-center items-center"
@@ -182,12 +217,56 @@ const CoachProfile = ({ coach, onClose }) => {
         />
         <p className="text-lg font-semibold">{coach.title}</p>
         <p className="text-md font-semibold">{coach.sport}</p>
+
+        {/* Display video if available */}
+        {coach.video ? (
+          isVideoPlaying ? (
+            <video
+              src={coach.video}
+              controls
+              autoPlay
+              className="w-full h-48 object-cover rounded-t-md mb-4"
+            />
+          ) : (
+            <div onClick={handleVideoClick} className="cursor-pointer">
+              <img
+                src={coach.profilePicture}
+                alt={`Click to play video of ${coach.name}`}
+                className="w-full h-48 object-cover rounded-t-md mb-4"
+              />
+              <p className="text-center text-white">Click to play video</p>
+            </div>
+          )
+        ) : (
+          <p className="text-center text-white">No video available</p>
+        )}
+
         <CoachesSession />
-        {/* Other coach details */}
       </div>
     </div>
   );
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 export default CoachesPage;

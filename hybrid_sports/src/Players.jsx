@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import styles from "./style";
-import { Navbar, Footer, Testimonials, PlayerRegistration } from "./components";
+import { Navbar, Footer, Testimonials, Player2Registration } from "./components";
 import { player01, player02, player03, player04, player05, player06 } from './assets';
 
 const PlayersPage = () => {
@@ -44,216 +44,8 @@ const PlayersPage = () => {
         },
         profilePicture: player03, // Placeholder image
       },
-      {
-        name: "Musembi",
-        age: 28,
-        gender: "Male",
-        sport: "Tennis",
-        nationality: "Kenyan",
-        dateOfBirth: "1995-08-12",
-        dominantFootHand: "Left-handed",
-        statisticsRankings: {
-          currentRank: 22,
-          winLossRecord: "35-12",
-        },
-        briefHistory: "Musembi has been a tennis enthusiast since childhood and has competed in various national tournaments.",
-        personalStatement: "I am committed to refining my skills and representing Kenya on the global tennis stage.",
-        contactInfo: {
-          phone: "+254722345678",
-          email: "musembi@example.com",
-          socialMedia: "@musembi_tennis",
-        },
-        profilePicture: player04, // Placeholder image
-      },
-      {
-        name: "Mulei",
-        age: 30,
-        gender: "Male",
-        sport: "Tennis",
-        nationality: "Kenyan",
-        dateOfBirth: "1993-03-22",
-        dominantFootHand: "Right-handed",
-        statisticsRankings: {
-          currentRank: 17,
-          winLossRecord: "45-10",
-        },
-        briefHistory: "Mulei has consistently ranked in the top 20 players in Kenya and is known for his powerful serves.",
-        personalStatement: "I aim to push myself to the limits and represent Kenya in international competitions.",
-        contactInfo: {
-          phone: "+254733456789",
-          email: "mulei@example.com",
-          socialMedia: "@mulei_tennis",
-        },
-        profilePicture: player05, // Placeholder image
-      },
-      {
-        name: "Nata",
-        age: 24,
-        gender: "Female",
-        sport: "Tennis",
-        nationality: "Kenyan",
-        dateOfBirth: "1999-06-18",
-        dominantFootHand: "Right-handed",
-        statisticsRankings: {
-          currentRank: 12,
-          winLossRecord: "50-20",
-        },
-        briefHistory: "Nata has competed in national tournaments since her teenage years and has shown great promise.",
-        personalStatement: "I am determined to be a role model for young girls aspiring to play tennis in Kenya.",
-        contactInfo: {
-          phone: "+254744567890",
-          email: "nata@example.com",
-          socialMedia: "@nata_tennis",
-        },
-        profilePicture: player06, // Placeholder image
-      },
-      {
-        name: "Solomon Karani",
-        age: 27,
-        gender: "Male",
-        sport: "Tennis",
-        nationality: "Kenyan",
-        dateOfBirth: "1996-09-05",
-        dominantFootHand: "Right-handed",
-        statisticsRankings: {
-          currentRank: 10,
-          winLossRecord: "55-15",
-        },
-        briefHistory: "Solomon is a veteran in the Kenyan tennis scene, with multiple national titles under his belt.",
-        personalStatement: "My passion is to bring home an international title and raise the standard of tennis in Kenya.",
-        contactInfo: {
-          phone: "+254755678901",
-          email: "solomon@example.com",
-          socialMedia: "@solomon_tennis",
-        },
-        profilePicture: player02, // Placeholder image
-      },
-      {
-        name: "Sam",
-        age: 22,
-        gender: "Male",
-        sport: "Tennis",
-        nationality: "Kenyan",
-        dateOfBirth: "2002-01-12",
-        dominantFootHand: "Right-handed",
-        statisticsRankings: {
-          currentRank: 25,
-          winLossRecord: "28-10",
-        },
-        briefHistory: "Sam is an up-and-coming tennis player with a lot of potential in the junior circuit.",
-        personalStatement: "I aim to become a top-ranked player in the next few years and compete internationally.",
-        contactInfo: {
-          phone: "+254766789012",
-          email: "sam@example.com",
-          socialMedia: "@sam_tennis",
-        },
-        profilePicture: player01, // Placeholder image
-      },
-      {
-        name: "Ronnie",
-        age: 26,
-        gender: "Male",
-        sport: "Tennis",
-        nationality: "Kenyan",
-        dateOfBirth: "1997-04-18",
-        dominantFootHand: "Left-handed",
-        statisticsRankings: {
-          currentRank: 16,
-          winLossRecord: "40-18",
-        },
-        briefHistory: "Ronnie has been a consistent performer in local tennis tournaments and is known for his agility on the court.",
-        personalStatement: "I strive to continue improving and make my mark on the tennis world.",
-        contactInfo: {
-          phone: "+254777890123",
-          email: "ronnie@example.com",
-          socialMedia: "@ronnie_tennis",
-        },
-        profilePicture: player03, // Placeholder image
-      },
-      {
-        name: "Edgar",
-        age: 29,
-        gender: "Male",
-        sport: "Tennis",
-        nationality: "Kenyan",
-        dateOfBirth: "1994-11-02",
-        dominantFootHand: "Right-handed",
-        statisticsRankings: {
-          currentRank: 19,
-          winLossRecord: "35-14",
-        },
-        briefHistory: "Edgar has a reputation for his endurance on the tennis court, participating in several marathon matches.",
-        personalStatement: "I want to be the best tennis player I can be and inspire others to pursue their dreams.",
-        contactInfo: {
-          phone: "+254788901234",
-          email: "edgar@example.com",
-          socialMedia: "@edgar_tennis",
-        },
-        profilePicture: player04, // Placeholder image
-      },
-      {
-        name: "Kinyua Paul",
-        age: 24,
-        gender: "Male",
-        sport: "Tennis",
-        nationality: "Kenyan",
-        dateOfBirth: "1999-03-15",
-        dominantFootHand: "Right-handed",
-        statisticsRankings: {
-          currentRank: 14,
-          winLossRecord: "45-20",
-        },
-        briefHistory: "Kinyua Paul is a young and talented player known for his speed and precision on the court.",
-        personalStatement: "I am focused on perfecting my game and representing Kenya internationally.",
-        contactInfo: {
-          phone: "+254799012345",
-          email: "kinyua@example.com",
-          socialMedia: "@kinyua_tennis",
-        },
-        profilePicture: player05, // Placeholder image
-      },
-      {
-        name: "Shakira",
-        age: 23,
-        gender: "Female",
-        sport: "Tennis",
-        nationality: "Kenyan",
-        dateOfBirth: "2000-08-25",
-        dominantFootHand: "Left-handed",
-        statisticsRankings: {
-          currentRank: 13,
-          winLossRecord: "42-16",
-        },
-        briefHistory: "Shakira has won multiple junior championships and is climbing the ranks in the senior category.",
-        personalStatement: "My aim is to inspire young women to take up sports and become champions.",
-        contactInfo: {
-          phone: "+254700123456",
-          email: "shakira@example.com",
-          socialMedia: "@shakira_tennis",
-        },
-        profilePicture: player06, // Placeholder image
-      },
-      {
-        name: "Christabel",
-        age: 27,
-        gender: "Female",
-        sport: "Tennis",
-        nationality: "Kenyan",
-        dateOfBirth: "1996-01-20",
-        dominantFootHand: "Right-handed",
-        statisticsRankings: {
-          currentRank: 11,
-          winLossRecord: "50-12",
-        },
-        briefHistory: "Christabel has been a consistent performer in national tennis tournaments.",
-        personalStatement: "I aspire to represent Kenya on the world stage and bring home trophies.",
-        contactInfo: {
-          phone: "+254711234567",
-          email: "christabel@example.com",
-          socialMedia: "@christabel_tennis",
-        },
-        profilePicture: player01, // Placeholder image
-      },
+     
+        
       {
         name: "Esther",
         age: 28,
@@ -288,7 +80,7 @@ const PlayersPage = () => {
       <div className={`${styles.paddingX} ${styles.flexCenter}`}>
         <div className={styles.boxWidth}>
           <Navbar />
-          <PlayerRegistration />
+          <Player2Registration />
         </div>
       </div>
 

@@ -54,7 +54,7 @@ const Hero = () => {
 
         <div className={`${styles.paragraph} max-w-[470px] mt-5`}>   
           <div className="flex justify-center mt-50">
-            <PlayerRegistration />
+            
           </div>
         </div>
       </div>
