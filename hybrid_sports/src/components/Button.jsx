@@ -70,7 +70,7 @@ const Button = ({ additionalClasses = "" }) => {
     <>
       <button
         type="button"
-        className={`fixed bottom-4 right-4 py-4 px-6 font-poppins font-medium text-[18px] border border-blue-800 bg-transparent rounded-[10px] hover:text-blue-800 outline-none ${additionalClasses}`}
+        className={`fixed  bottom-4  py-4 px-6 font-poppins font-medium text-[18px] border border-blue-800 bg-dimWhite rounded-[10px] hover:text-blue-800 outline-none ${additionalClasses}`}
         onClick={() => setShowForm(true)}
       >
         Sign up Now

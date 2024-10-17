@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import styles from "./style";
 import { Navbar, Footer, Events } from "./components";
 import Login from "./components/Login"; // Import the Login component
+import jsPDF from "jspdf"; // Import jsPDF
+import "jspdf-autotable"; // For better table formatting
 
 const Admin = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -69,6 +71,37 @@ const Admin = () => {
     }
   };
 
+
+  const generatePDF = async (playerId) => {
+    try {
+      const response = await fetch(`http://localhost:2345/juniors/getPlayer?id=${playerId}`);
+
+      if (response.ok) {
+        const player = await response.json();
+
+        const doc = new jsPDF();
+        doc.text("Player Information", 20, 10);
+        doc.autoTable({
+          head: [["Field", "Value"]],
+          body: [
+            ["Full Name", player.fullName],
+            ["Age", player.age],
+            ["Partner", player.partner],
+            ["Coach/Academy", player.coach_Academy],
+            ["Phone Number", player.phoneNo],
+            ["Gender", player.gender],
+          ],
+        });
+
+        doc.save(`${player.fullName}_player_info.pdf`);
+      } else {
+        console.error("Error fetching player data:", response.statusText);
+      }
+    } catch (error) {
+      console.error("Error generating PDF:", error);
+    }
+  };
+
   const handleDeletePlayer = async (playerId) => {
     const confirmDelete = window.confirm("Are you sure you want to delete this player?");
     if (!confirmDelete) return;
@@ -100,6 +133,7 @@ const Admin = () => {
           <p className="text-gray-700"><span className="font-semibold">Gender: </span>{player.gender}</p>
           <button onClick={() => handleEditPlayer(player)} className="mt-2 bg-yellow-500 text-white px-4 py-2 rounded">Edit</button>
           <button onClick={() => handleDeletePlayer(player.id)} className="mt-2 bg-red-500 text-white px-4 py-2 rounded">Delete</button>
+          <button onClick={() => generatePDF(player.id)} className="mt-2 bg-green-500 text-white px-4 py-2 rounded">generatePDF</button>
         </div>
       ))}
     </div>
@@ -176,4 +210,4 @@ const Admin = () => {
   );
 };
 
-export default Admin;
+export default Admin;                                                                                          

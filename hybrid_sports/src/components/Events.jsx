@@ -37,12 +37,12 @@ const EventCard = ({ title, date, location, Image }) => {
         </p>
         <p className="font-poppins font-normal text-gray-200 text-[18px] leading-[24px]">
           {location}
-        </p>
+        </p><br />
 
-        {/* Show Court Button */}
-        <div className="flex justify-center mt-4">
+        
+        
           <Button styles={`mt-2`} label="Show Court" onClick={handleOpenModal} />
-        </div>
+        
       </div>
 
       {/* Full-screen Modal for Enlarged Image */}
