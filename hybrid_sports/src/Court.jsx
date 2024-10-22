@@ -60,18 +60,14 @@ const CourtsPage = () => {
           <Navbar />
         </div>
       </div>
-      <div className="container mx-auto p-4 pt-6 md:p-6 lg:p-12">
+      <div className="container mx-auto p-4 pt-6 md:p-6 lg:p-12 text-center">
+        <br />
+        <br />
       <h1 className="text-3xl font-bold mb-4 ">Empowering Young Champions, Enhancing Your Lifestyle🎾</h1>
-        <h1 className="text-xl3 sm:text-xl6 leading-xl sm:leading-xl2  text-black  factorial__headingFontFamily">
-        At HybridSports, we're revolutionizing the world of sports by bringing together traditional and emerging sports through our cutting-edge platform. As the largest sports booking app and SaaS for venues, we're not just focusing on racket sports—we're bridging the gap between various disciplines, from tennis and padel to new-age hybrid sports that blend the best of both worlds.
 
-With a global footprint in over 49 countries, we've partnered with 4,800 clubs, offering access to 21,000 courts and connecting 3.1 million players. Our community is passionate about exploring new ways to play, blending classic sports with innovative hybrids that challenge the status quo.
 
-Whether you're a fan of traditional racket sports or curious about trying something new, HybridSports is your gateway to a diverse sports experience. Join us as we push the boundaries of sports engagement, connecting players and venues in ways that inspire creativity and competition.
 
-Explore the future of sports with HybridSports—where innovation meets passion, and everyone can find their perfect game.
-Our team of experienced coaches and trainers are dedicated to helping you achieve your fitness goals.
-        </h1><br></br>
+
         <h1 className="text-3xl font-bold mb-3 ">Courts Available</h1>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {courts.map((court, index) => (

@@ -39,7 +39,7 @@ const EventCard = ({ title, date, location, Image }) => {
           {location}
         </p><br />
 
-        
+        <br />
         
           <Button styles={`mt-2`} label="Show Court" onClick={handleOpenModal} />
         

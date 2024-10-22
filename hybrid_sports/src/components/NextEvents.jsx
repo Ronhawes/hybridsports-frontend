@@ -9,7 +9,7 @@ const NextEvents = () => {
   const [showRegistrationForm, setShowRegistrationForm] = useState(false);
 
   const nextEventsData = [
-    { date: '2023-03-15', event: 'Knockout series', location: 'Public Service', image: tour6 },
+    { date: '2024-11-', event: 'Mercavi Nakuru', location: 'Nakuru', image: tour6 },
     // Add more events as needed
   ];
 

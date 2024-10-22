@@ -88,9 +88,10 @@ const CoachesPage = () => {
         </div>
       </div>
       <div className="container mx-auto p-4 pt-6 md:p-6 lg:p-12">
-        
-        <h1 className="text-black-800 text-3xl font-bold mb-4 ">Empowering Young Champions, Enhancing Your Lifestyle🎾</h1>
-        <h1 className="text-base mb-6 max-w-[900px] text-center">
+        <br />
+        <br />
+        <h1 className="text-black-800 text-3xl font-bold mb-4  text-center">Empowering Young Champions, Enhancing Your Lifestyle🎾</h1>
+        <h1 className=" mb-6 max-w-[900px] text-center">
           Experienced, certified coaches (ITF, ATP, and Padel professionals), passionate and dedicated trainers, sports psychologists, and fitness experts provide a comprehensive Player Development Program that includes:
         </h1>
         <ul className="list-disc ml-4 mb-6">

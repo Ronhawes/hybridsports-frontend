@@ -8,9 +8,9 @@ export const navLinks = [
   { id: "events", title: "Events", link: "/Events" },
   { id: "players", title: "Players", link: "/Players" },
   { id: "courts", title: "Courts", link: "/Courts" },
-  { id: "services", title: "Our Services", link: "/Events" },
-  { id: "tournaments", title: "Tournaments", link: "/Mercavi" },
+  
   { id: "academies", title: "Academies", link: "/Academies" },
+  { id: "tournaments", title: "Mercavi", link: "/Mercavi" },
 ];
 
 

@@ -152,8 +152,8 @@ const Button = ({ additionalClasses = "" }) => {
               
               
 
-              {/* Optional SignIn component */}
-              <SignIn />
+           
+             
 
               <button
                 type="submit"

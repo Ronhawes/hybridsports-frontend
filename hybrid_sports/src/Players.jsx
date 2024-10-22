@@ -84,11 +84,11 @@ const PlayersPage = () => {
         </div>
       </div>
 
-      <div className="container mx-auto p-4 pt-6 md:p-6 lg:p-12">
-        <h1 className="text-black-800 text-3xl font-bold mb-4">
+      <div className="container mx-auto p-4 pt-6 md:p-6 lg:p-12 ">
+        <h1 className="text-black-800 text-3xl font-bold mb-4 text-center">
         Empowering Young Champions, Enhancing Your Lifestyle🎾
         </h1> <br />
-        <p className="text-base mb-6 max-w-[900px]">Player Management:</p>
+        <p className="text-base mb-6 max-w-[900px] text-center">Player Management:</p>
         <ul className="list-disc pl-5 mb-6">
           <li>Tournament registration and scheduling</li>
           <li>Travel arrangements (flights, accommodation)</li>
