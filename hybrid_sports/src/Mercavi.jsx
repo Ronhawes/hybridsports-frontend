@@ -1,6 +1,6 @@
 import styles from "./style";
 import { useState } from "react";
-import { Ranking, NextEvents, Navbar, Footer, Hero2, Testimonials, Player2Registration, PlayerRegistration } from './components';
+import { Ranking, NextEvents, Navbar, Footer, Hero2, Testimonials, Player2Registration, PlayerRegistration,Booking1 } from './components';
 import { tour1, tour2, tour3, tour4, tour8, video1 } from "./assets";
 import { quotes } from "./assets";
 
@@ -52,7 +52,7 @@ const Mercavi = () => {
             </div>
           </div>
 
-          {/* Section 2: Rankings and Events */}
+          {/* Section 2:  Events */}
           <div className="flex-auto w-full md:w-1/4 bg-slate-900 rounded-lg shadow-lg p-6">
             <NextEvents /><br />
           </div>
@@ -63,6 +63,7 @@ const Mercavi = () => {
           <div className={`bg-primary ${styles.flexStart} text-blue-50 rounded-lg p-6`}>
             <div className={`${styles.boxWidth}`}>
               <Ranking />
+            
               <Hero2 />
             </div>
           </div>

@@ -8,6 +8,7 @@ import PlayersPage from './Players';
 import CourtsPage from './Court';
 import Admin from './admin';
 
+
 const Router = () => {
   return (
     <BrowserRouter>
@@ -16,7 +17,6 @@ const Router = () => {
         <Route path="/coaches" element={<CoachesPage />} />
         <Route path="/Academies" element={<Academies />} />
         <Route path="/Admin" element={<Admin />} />
-        
         <Route path="/Mercavi" element={<Mercavi />} />
         <Route path="/Events" element={<EventsMain />} />
         <Route path="/Courts" element={<CourtsPage />} />

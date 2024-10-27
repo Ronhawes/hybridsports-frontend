@@ -110,6 +110,7 @@ export const footerLinks = [
       { name: "Academies", link: "/Academies" },
       { name: "Players", link: "/Players" },
       { name: "Tournaments", link: "/Events" },
+      { name: "Admin", link: "/Admin" },
     ],
   },
   {

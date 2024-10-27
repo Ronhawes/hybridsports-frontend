@@ -41,7 +41,7 @@ const PlayerRegistration = ({ additionalClasses = "" }) => {
     };
 
     try {
-      const apiUrl = "http://localhost:2345/users/add";
+      const apiUrl = "https://hybridsports-69backend-85bb3e426b16.herokuapp.com/users/add";
       const response = await fetch(apiUrl, {
         method: 'POST',
         headers: {

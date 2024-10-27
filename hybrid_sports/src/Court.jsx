@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import styles from "./style";
-import { Navbar, Footer, Testimonials, SignIn, BlockBooking,CoachesSession } from "./components";
-import { court01, court02, court03 } from './assets';
+import { Navbar, Footer, Testimonials, SignIn, BlockBooking,CoachSessionsButton} from "./components";
+import { court01, court02, court03 ,tour16,tour17} from './assets';
 import Button from './components/Academies';
 
 const CourtsPage = () => {
@@ -61,14 +61,13 @@ const CourtsPage = () => {
         </div>
       </div>
       <div className="container mx-auto p-4 pt-6 md:p-6 lg:p-12 text-center">
-        <br />
-        <br />
-      <h1 className="text-3xl font-bold mb-4 ">Empowering Young Champions, Enhancing Your Lifestyle🎾</h1>
+      
 
 
 
 
-        <h1 className="text-3xl font-bold mb-3 ">Courts Available</h1>
+        <h1 className="text-5xl font-bold italic mb-3 ">Courts Available</h1><br /><br />
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {courts.map((court, index) => (
             <CourtCard
@@ -141,7 +140,7 @@ const CourtProfile = ({ court, onClose }) => {
         <p className="font-poppins font-normal text-[16px] leading-[24px] text-dimWhite">Court Manager: {court.courtManager.name}</p>
         <p className="font-poppins font-normal text-[16px] leading-[24px] text-dimWhite">Phone: {court.courtManager.contact}</p>
         <p className="font-poppins font-normal text-[16px] leading-[24px] text-dimWhite">Email: {court.courtManager.email}</p>
-        <p className="font-poppins font-normal text-[16px] leading-[24px] text-dimWhite"><CoachesSession /> </p>
+        <p className="font-poppins font-normal text-[16px] leading-[24px] text-dimWhite"><CoachSessionsButton /> </p>
         <button onClick={onClose} className="mt-4 bg-gray-500 text-white p-2 rounded">
           Close
         </button>

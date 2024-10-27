@@ -1,9 +1,9 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ongoingEvents } from "../constants"; // Make sure this is updated with your events data
 import styles, { layout } from "../style";
 import Button from "./Button";
 
-const EventCard = ({ title, date, location, Image }) => {
+const EventCard = ({ title, date, location, Image, onShowForm }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleOpenModal = () => {
@@ -39,16 +39,13 @@ const EventCard = ({ title, date, location, Image }) => {
           {location}
         </p><br />
 
-        <br />
-        
-          <Button styles={`mt-2`} label="Show Court" onClick={handleOpenModal} />
-        
+        <Button styles={`mt-2`} label="Show Court" onClick={onShowForm} />
       </div>
 
       {/* Full-screen Modal for Enlarged Image */}
       {isModalOpen && (
         <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-80 flex justify-center items-center z-50">
-          <div className="relative w-full max-w-4xl h-[90vh]"> {/* Added height limit */}
+          <div className="relative w-full max-w-4xl h-[90vh]">
             <img
               src={Image}
               alt="Enlarged Court"
@@ -70,6 +67,7 @@ const EventCard = ({ title, date, location, Image }) => {
 
 const OngoingEvents = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isFormOpen, setIsFormOpen] = useState(false);
 
   const handleNext = () => {
     if (currentIndex < ongoingEvents.length - 1) {
@@ -81,6 +79,16 @@ const OngoingEvents = () => {
     if (currentIndex > 0) {
       setCurrentIndex(currentIndex - 1);
     }
+  };
+
+  const handleShowForm = () => {
+    setIsFormOpen(true);
+    document.body.style.overflow = 'hidden'; // Disable scrolling
+  };
+
+  const handleCloseForm = () => {
+    setIsFormOpen(false);
+    document.body.style.overflow = 'auto'; // Enable scrolling
   };
 
   return (
@@ -99,7 +107,7 @@ const OngoingEvents = () => {
           style={{ transform: `translateX(-${currentIndex * 100}%)`, display: 'flex', flexDirection: 'row' }}
         >
           {ongoingEvents.map((event, index) => (
-            <EventCard key={event.id} {...event} />
+            <EventCard key={event.id} {...event} onShowForm={handleShowForm} />
           ))}
         </div>
       </div>
@@ -111,6 +119,25 @@ const OngoingEvents = () => {
       >
         &gt;
       </button>
+
+      {/* Form Modal */}
+      {isFormOpen && (
+        <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-80 flex justify-center items-center z-50">
+          <div className="relative w-full max-w-4xl h-[90vh] overflow-y-auto"> {/* Add overflow-y-auto */}
+            {/* Your form content here */}
+            <form>
+              {/* Form fields */}
+            </form>
+            {/* Close Button (X) */}
+            <button 
+              className="absolute top-4 right-4 bg-gray-500 text-white py-2 px-4 rounded-full"
+              onClick={handleCloseForm}
+            >
+              X
+            </button>
+          </div>
+        </div>
+      )}
     </section>
   );
 };

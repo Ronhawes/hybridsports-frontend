@@ -35,8 +35,8 @@ const Navbar = () => {
   return (
     <nav className="fixed top-0 left-0 w-full flex py-3 justify-between items-center navbar z-50 bg-slate-500 bg-opacity-45 ">
       <div className="flex items-center justify-center">
-        <img src={tour12} alt="Tournament Icon" className="text-blue-800 mr-2 w-36 h-34 rounded-2xl" />
-        <span className=" font-bold text-3xl">Hybrid Sports </span>
+        <img src={tour12} alt="Tournament Icon" className="text-blue-800 mr-2 w-[120px] h-[100px] rounded-2xl" />
+        <span className=" font-bold italic text-3xl">Hybrid Sports </span>
       </div>
 
       <div className="flex items-center space-x-4">

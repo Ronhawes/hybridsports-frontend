@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import styles from "./style";
 import { Navbar, Footer, Testimonials, Player2Registration } from "./components";
-import { player01, player02, player03, player04, player05, player06 } from './assets';
+import { player01, player02, player03, player04, player05, player06 , tour16,tour17} from './assets';
 
 const PlayersPage = () => {
   const [selectedPlayer, setSelectedPlayer] = useState(null);
@@ -85,16 +85,24 @@ const PlayersPage = () => {
       </div>
 
       <div className="container mx-auto p-4 pt-6 md:p-6 lg:p-12 ">
-        <h1 className="text-black-800 text-3xl font-bold mb-4 text-center">
-        Empowering Young Champions, Enhancing Your Lifestyle🎾
+        <h1 className="text-black-800 text-5xl italic font-bold mb-4 text-center">
+        PLAYERS
         </h1> <br />
-        <p className="text-base mb-6 max-w-[900px] text-center">Player Management:</p>
-        <ul className="list-disc pl-5 mb-6">
-          <li>Tournament registration and scheduling</li>
-          <li>Travel arrangements (flights, accommodation)</li>
-          <li>Training programs during tournaments</li>
-          <li>Professional profile creation for athletes</li>
-        </ul>
+<div className="flex flex-col md:flex-row items-center justify-center mb-6">
+  <div className="w-full md:w-1/2 p-2">
+  <p className=" mb-6 text-white max-w-[900px] text-3xl font-bold italic text-center">Player Management:</p>
+    <ul className="text-center text-white max-w-[900px] text-3xl font-bold italic">
+      <li>Tournament registration and scheduling</li>
+      <li>Travel arrangements (flights, accommodation)</li>
+      <li>Training programs during tournaments</li>
+      <li>Professional profile creation for athletes</li>
+    </ul>
+  </div>
+  <div className="w-full md:w-1/2 p-2">
+    <img src={tour17} alt="Coaching Image" className="w-[600px] h-72 object-cover rounded-lg" />
+  </div>
+</div>
+
 
         <h1 className="text-3xl font-bold mb-4 text-dimWhite">See our players</h1>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">

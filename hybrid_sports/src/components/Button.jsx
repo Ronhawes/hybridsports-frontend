@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import SignIn from "./SignIn";
 
 const Button = ({ additionalClasses = "" }) => {
   const [showForm, setShowForm] = useState(false);
@@ -16,6 +15,7 @@ const Button = ({ additionalClasses = "" }) => {
   const handleExit = () => {
     setShowForm(false);
     setFormData({ fullName: '', age: '', partner: '', coach_Academy: '', phoneNo: '', gender: '' });
+    document.body.style.overflow = 'auto'; // Re-enable scrolling
   };
 
   const handleChange = (e) => {
@@ -44,7 +44,7 @@ const Button = ({ additionalClasses = "" }) => {
     };
 
     try {
-      const apiUrl = "http://localhost:2345/juniors/add";
+      const apiUrl = "https://hybridsports-69backend-85bb3e426b16.herokuapp.com/juniors/add";
       const response = await fetch(apiUrl, {
         method: 'POST',
         headers: {
@@ -66,12 +66,17 @@ const Button = ({ additionalClasses = "" }) => {
     }
   };
 
+  const handleShowForm = () => {
+    setShowForm(true);
+    document.body.style.overflow = 'hidden'; // Disable scrolling on the background
+  };
+
   return (
     <>
       <button
         type="button"
-        className={`fixed  bottom-4  py-4 px-6 font-poppins font-medium text-[18px] border border-blue-800 bg-dimWhite rounded-[10px] hover:text-blue-800 outline-none ${additionalClasses}`}
-        onClick={() => setShowForm(true)}
+        className={`fixed bottom-4 py-4 px-6 font-poppins font-medium text-[18px] border border-blue-800 bg-dimWhite rounded-[10px] hover:text-blue-800 outline-none ${additionalClasses}`}
+        onClick={handleShowForm}
       >
         Sign up Now
       </button>
@@ -101,8 +106,7 @@ const Button = ({ additionalClasses = "" }) => {
               <input 
                 type="tel" 
                 name="phoneNo" 
-                value={formData.phoneNo} 
-                onChange={handleChange} 
+                value={formData.phoneNo} onChange={handleChange} 
                 className="bg-white border p-2 mb-4 w-full" 
                 required 
               />

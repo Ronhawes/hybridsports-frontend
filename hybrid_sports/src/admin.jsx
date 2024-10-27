@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import styles from "./style";
-import { Navbar, Footer, Events } from "./components";
+import { Navbar, Footer, Events, Booking1 } from "./components";
 import Login from "./components/Login"; // Import the Login component
 import jsPDF from "jspdf"; // Import jsPDF
 import "jspdf-autotable"; // For better table formatting
+
 
 const Admin = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -16,7 +17,7 @@ const Admin = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const apiUrl = "http://localhost:2345/juniors/getPlayers";
+        const apiUrl = "https://hybridsports-69backend-85bb3e426b16.herokuapp.com/juniors/getPlayers";
         const response = await fetch(apiUrl);
 
         if (response.ok) {
@@ -47,7 +48,7 @@ const Admin = () => {
   const handleUpdatePlayer = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(`http://localhost:2345/juniors/update`, {
+      const response = await fetch(`https://hybridsports-69backend-85bb3e426b16.herokuapp.com/juniors/update`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -74,7 +75,7 @@ const Admin = () => {
 
   const generatePDF = async (playerId) => {
     try {
-      const response = await fetch(`http://localhost:2345/juniors/getPlayer?id=${playerId}`);
+      const response = await fetch(`https://hybridsports-69backend-85bb3e426b16.herokuapp.com/getPlayer?id=${playerId}`);
 
       if (response.ok) {
         const player = await response.json();
@@ -107,7 +108,7 @@ const Admin = () => {
     if (!confirmDelete) return;
 
     try {
-      const response = await fetch(`http://localhost:2345/juniors/delete?id=${playerId}`, {
+      const response = await fetch(`https://hybridsports-69backend-85bb3e426b16.herokuapp.com/delete?id=${playerId}`, {
         method: "DELETE",
       });
 
@@ -202,7 +203,9 @@ const Admin = () => {
             <button onClick={toggleShowMore} className="mt-2 bg-blue-500 text-white px-4 py-2 rounded">
               {showMore ? "Show Less" : "Show More"}
             </button>
+            
           )}
+          <Booking1/>
         
       </div>
     <Footer  className="bg-black"/>

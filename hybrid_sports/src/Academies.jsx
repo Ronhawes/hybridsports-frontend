@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styles from "./style";
 import { Navbar, Footer, Testimonials, SignIn,Academies, Academyregistration, } from "./components";
-import { soccer, racket, racket2, racket3 } from './assets';
+import { soccer, racket, racket2, racket3 ,tour16,tour17} from './assets';
 
 const AcademiesPage = () => {
   const [selectedAcademy, setSelectedAcademy] = useState(null);
@@ -74,18 +74,26 @@ const AcademiesPage = () => {
         </div>
       </div>
       <div className="container mx-auto p-4 pt-6 md:p-6 lg:p-12">
-        
-        <h1 className="text-3xl font-bold mb-4 ">Empowering Young Champions, Enhancing Your Lifestyle🎾</h1>
-        <h1 className=" sm:text-xl4 leading-xl sm:leading-xl2  text-black factorial__headingFontFamily">
-        At HybridSports, we're revolutionizing the world of sports by bringing together traditional and emerging sports through our cutting-edge platform. As the largest sports booking app and SaaS for venues, we're not just focusing on racket sports—we're bridging the gap between various disciplines, from tennis and padel to new-age hybrid sports that blend the best of both worlds.
+        <h1 className="text-5xl italic font-bold mb-4 text-center ">ACADEMIES</h1><br />
+       
+        <div className="flex flex-col md:flex-row items-center justify-center mb-6">
+  {/* Section 1: Image */}
+  <div className="w-full md:w-1/2 p-2">
+    <img src={tour16} alt="Coaching Image" className="w-[600px] h-72 object-cover rounded-lg" />
+  </div>
 
-With a global footprint in over 49 countries, we've partnered with 4,800 clubs, offering access to 21,000 courts and connecting 3.1 million players. Our community is passionate about exploring new ways to play, blending classic sports with innovative hybrids that challenge the status quo.
+  {/* Section 2: Text Content */}
+  <div className="w-full md:w-1/2 p-2">
+    <h1 className="text-center text-white max-w-[900px] text-3xl font-bold italic ">
+    Join our academies for comprehensive training in Tennis and Padel.
+    </h1>
+  </div>
+</div>
 
-Whether you're a fan of traditional racket sports or curious about trying something new, HybridSports is your gateway to a diverse sports experience. Join us as we push the boundaries of sports engagement, connecting players and venues in ways that inspire creativity and competition.
-
-Explore the future of sports with HybridSports—where innovation meets passion, and everyone can find their perfect game.
-Our team of experienced coaches and trainers are dedicated to helping you achieve your fitness goals.
-        </h1>
+<br />
+<br />
+<br />
+     
         <div className={`${styles.paragraph} max-w-[470px] mt-5`}>   
           <div className="flex  mt-50">
             

@@ -18,12 +18,14 @@ import Ranking from "./Ranking";
 import NextEvents from "./NextEvents";
 import Results from "./Results";
 import Hero2 from "./Hero2";
-import CoachesSession from "./Button1";
+import CoachSessionsButton from "./Button1";
 import PlayerRegistration from "./PlayerRegistration";
 import Player2Registration from "./Player2Registration";
 import CourtRegistration from "./CourtRegistration";
 import BlockBooking from "./BlockBooking";
 import Login from "./Login";
+import Booking1 from "./Booking";
+
 
 export {
   Navbar,
@@ -46,11 +48,11 @@ export {
   NextEvents,
   Results,
   Hero2,
-  CoachesSession,
+  CoachSessionsButton,
   PlayerRegistration,
   Player2Registration,
   CourtRegistration,
   BlockBooking,
-  Login
-  
+  Login,
+  Booking1
 };

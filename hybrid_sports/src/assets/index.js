@@ -54,6 +54,8 @@ import video1 from './video1.mp4'
 import video2 from './video2.mp4'
 import tour14 from './tour14.png'
 import tour15 from './tour15.png'
+import tour16 from './tour16.png'
+import tour17 from './tour17.png'
 
 export {
   airbnb,
@@ -96,5 +98,6 @@ export {
   court02,
   court03,
   video1,video2,
-  tour1,tour2,tour3,tour4,tour5,tour6,tour7,tour8,tour9,tour10,tour11,tour12,tour13, tour14, tour15
+  tour1,tour2,tour3,tour4,tour5,tour6,tour7,tour8,tour9,tour10,tour11,tour12,tour13, tour14, tour15,
+  tour16, tour17
 };

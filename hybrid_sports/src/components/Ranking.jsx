@@ -10,8 +10,8 @@ const Ranking = () => {
     const fetchData = async () => {
       try {
         const apiUrl = selectedCategory === 'menSingles'
-          ? "http://localhost:2345/menSingles/getPlayers"
-          : "http://localhost:2345/womenSingles/getPlayers"; // Switch API URL based on category
+          ? "https://hybridsports-69backend-85bb3e426b16.herokuapp.com/menSingles/getPlayers"
+          : "https://hybridsports-69backend-85bb3e426b16.herokuapp.com/womenSingles/getPlayers"; // Switch API URL based on category
 
         const response = await fetch(apiUrl);
 
