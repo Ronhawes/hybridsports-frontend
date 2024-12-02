@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import styles from "./style";
-import { Navbar, Footer, Events, Booking1, Juniors, Tickets, Login1 } from "./components";
-
+import { Navbar, Footer,  CoachesAdmin } from "./components";
+import Login from "./components/Login"; // Import the Login component
+import jsPDF from "jspdf"; // Import jsPDF
 import "jspdf-autotable"; // For better table formatting
 
 
-const Admin = () => {
+const CoachesAdmin1 = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
  
   
@@ -15,7 +16,7 @@ const Admin = () => {
   };
 
   if (!isAuthenticated) {
-    return <Login1 onLoginSuccess={handleLoginSuccess} />;
+    return <Login onLoginSuccess={handleLoginSuccess} />;
   }
 
   return (
@@ -29,14 +30,12 @@ const Admin = () => {
       <div className={`${styles.flexCenter} flex-col`}>
         
           
-        <h1 className="text-4xl font-bold mb-8">Admin Dashboard</h1>
-        <h2 className="text-2xl font-bold mb-4">National Junior Circuit Rankings</h2>
+        <h1 className="text-4xl font-bold mb-8">Coaches Dashboard</h1>
+        <h2 className="text-2xl font-bold mb-4">.</h2>
           
             
           
-        <Booking1/>
-        <Juniors/>
-        <Tickets/>
+        <CoachesAdmin/>
 
         
       </div>
@@ -45,4 +44,4 @@ const Admin = () => {
   );
 };
 
-export default Admin;
+export default CoachesAdmin1;

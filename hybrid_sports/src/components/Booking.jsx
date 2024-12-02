@@ -10,18 +10,18 @@ const Booking1 = () => {
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
-      setError(null); // Reset error before fetching
+      setError(null);
       try {
         const apiUrl =
           selectedCategory === 'coachesBooking'
-            ? "http://localhost:2345/coachesBooking/getPlayers"
-            : "http://localhost:2345/courts/getPlayers";
+            ? "https://hybridsports-69backend-85bb3e426b16.herokuapp.com/coachesBooking/getPlayers"
+            : "https://hybridsports-69backend-85bb3e426b16.herokuapp.com/courts/getPlayers";
 
         const response = await fetch(apiUrl);
 
         if (response.ok) {
           const data = await response.json();
-          setBookings(data); // Update state with the fetched data
+          setBookings(data);
         } else {
           console.error("Error: ", response.statusText);
           setError('Failed to fetch data');
@@ -39,40 +39,30 @@ const Booking1 = () => {
 
   const handleCategoryChange = (category) => {
     setSelectedCategory(category);
-    setShowMore(false); // Reset the "Show More" state when switching categories
+    setShowMore(false);
   };
 
   const toggleShowMore = () => {
     setShowMore((prev) => !prev);
   };
 
-  const renderTable = () => (
-    <div className="overflow-x-auto">
-      <table className="min-w-full border border-transparent mb-4">
-        <thead>
-          <tr>
-            <th className="py-2 px-4 border-b">Full Name</th>
-            <th className="py-2 px-4 border-b">Email</th>
-            <th className="py-2 px-4 border-b">ID Number</th>
-            <th className="py-2 px-4 border-b">Phone Number</th>
-            <th className="py-2 px-4 border-b">Time</th>
-            <th className="py-2 px-4 border-b">Coach</th>
-          </tr>
-        </thead>
-        <tbody>
-          {Array.isArray(bookings) &&
-            bookings.slice(0, showMore ? bookings.length : 5).map((booking, index) => (
-              <tr key={index}>
-                <td className="py-2 px-4 border-b">{booking.fullName}</td>
-                <td className="py-2 px-4 border-b">{booking.email}</td>
-                <td className="py-2 px-4 border-b text-center">{booking.idNo}</td>
-                <td className="py-2 px-4 border-b text-center">{booking.phoneNo}</td>
-                <td className="py-2 px-4 border-b text-center">{booking.time}</td>
-                <td className="py-2 px-4 border-b text-center">{booking.coach}</td>
-              </tr>
-            ))}
-        </tbody>
-      </table>
+  const renderBoxes = () => (
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-4">
+      {Array.isArray(bookings) &&
+        bookings.slice(0, showMore ? bookings.length : 5).map((booking, index) => (
+          <div
+            key={index}
+            className="bg-white shadow-md rounded-lg p-4 border border-gray-300"
+          >
+            <h3 className="text-lg font-semibold mb-2">{booking.fullName}</h3>
+            <p><strong>Email:</strong> {booking.email}</p>
+            <p><strong>ID Number:</strong> {booking.idNo}</p>
+            <p><strong>Phone Number:</strong> {booking.phoneNo}</p>
+            <p><strong>Day:</strong> {booking.day}</p>
+            <p><strong>Time:</strong> {booking.time}</p>
+            <p><strong>{selectedCategory === 'coachesBooking' ? 'Coach' : 'Court'}:</strong> {selectedCategory === 'coachesBooking' ? booking.coach : booking.court}</p>
+          </div>
+        ))}
     </div>
   );
 
@@ -103,7 +93,7 @@ const Booking1 = () => {
       </div>
 
       {error && <div className="text-red-500 mb-4">{error}</div>}
-      {renderTable()}
+      {renderBoxes()}
       <button onClick={toggleShowMore} className="bg-blue-500 text-white py-2 px-4 rounded mt-4">
         {showMore ? 'See Less' : 'See More'}
       </button>

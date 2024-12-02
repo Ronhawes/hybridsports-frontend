@@ -7,6 +7,7 @@ import EventsMain from './EventsMain';
 import PlayersPage from './Players';
 import CourtsPage from './Court';
 import Admin from './admin';
+import  CoachesAdmin1 from './CoachesAdmin';
 
 
 const Router = () => {
@@ -21,6 +22,7 @@ const Router = () => {
         <Route path="/Events" element={<EventsMain />} />
         <Route path="/Courts" element={<CourtsPage />} />
         <Route path="/Players" element={<PlayersPage />} />
+        <Route path="/CoachesAdmin" element={<CoachesAdmin1 />} />
       </Routes>
     </BrowserRouter>
   );

@@ -1,58 +1,44 @@
-import { useState, useEffect } from "react";
-import { ongoingEvents } from "../constants"; // Make sure this is updated with your events data
-import styles, { layout } from "../style";
+import { useState } from "react";
+import { ongoingEvents } from "../constants";
 import Button from "./Button";
+import TicketRegistration from "./Button3";
 
 const EventCard = ({ title, date, location, Image, onShowForm }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const handleOpenModal = () => {
-    setIsModalOpen(true);
-  };
-
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
-  };
+  const handleOpenModal = () => setIsModalOpen(true);
+  const handleCloseModal = () => setIsModalOpen(false);
 
   return (
     <div className="flex-shrink-0 w-full max-w-md mx-2 my-4">
-      {/* Event image */}
       <div
         className="w-full h-[300px] rounded-[20px] overflow-hidden cursor-pointer"
         style={{
           backgroundImage: `url(${Image})`,
           backgroundSize: 'cover',
-          backgroundRepeat: 'no-repeat',
           backgroundPosition: 'center',
         }}
-        onClick={handleOpenModal} // Open modal when clicked
+        onClick={handleOpenModal}
       />
-      {/* Event details */}
       <div className="p-4 bg-slate-900 bg-opacity-60 rounded-b-[20px]">
-        <h4 className="font-poppins font-semibold text-white text-[28px] leading-[32px] mb-3">
-          {title}
-        </h4>
-        <p className="font-poppins font-normal text-gray-300 text-[20px] leading-[28px] mb-2">
-          {date}
-        </p>
-        <p className="font-poppins font-normal text-gray-200 text-[18px] leading-[24px]">
-          {location}
-        </p><br />
-
-        <Button styles={`mt-2`} label="Show Court" onClick={onShowForm} />
+        <h4 className="font-poppins font-semibold text-white text-[28px] mb-3">{title}</h4>
+        <p className="font-poppins font-normal text-gray-300 text-[20px] mb-2">{date}</p>
+        <p className="font-poppins font-normal text-gray-200 text-[18px]">{location}</p><br />
+        
+        <div className="flex space-x-2 mt-2">
+          <div className="relative flex-1 p-4 w-full md:w-1/2">
+            <Button styles="w-full" label="Show Court" onClick={onShowForm} /> 
+          </div>
+          <div className="relative flex-1 p-4 w-full md:w-1/2">
+            <TicketRegistration styles="w-full" label="Ticket Registration" onClick={onShowForm} />
+          </div>
+        </div>
       </div>
-
-      {/* Full-screen Modal for Enlarged Image */}
       {isModalOpen && (
-        <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-80 flex justify-center items-center z-50">
-          <div className="relative w-full max-w-4xl h-[90vh]">
-            <img
-              src={Image}
-              alt="Enlarged Court"
-              className="object-contain w-full h-full rounded-[20px]"
-            />
-            {/* Close Button (X) */}
-            <button 
+        <div className="fixed top-0 left-0 right-0 bottom-0 bg-black bg-opacity-80 flex justify-center items-center z-50">
+          <div className="relative w-full max-w-4xl h-[90vh] overflow-y-auto bg-white p-4 rounded-[20px]">
+            <img src={Image} alt="Enlarged Court" className="object-contain w-full h-full rounded-[20px]" />
+            <button
               className="absolute top-4 right-4 bg-gray-500 text-white py-2 px-4 rounded-full"
               onClick={handleCloseModal}
             >
@@ -83,16 +69,14 @@ const OngoingEvents = () => {
 
   const handleShowForm = () => {
     setIsFormOpen(true);
-    document.body.style.overflow = 'hidden'; // Disable scrolling
   };
 
   const handleCloseForm = () => {
     setIsFormOpen(false);
-    document.body.style.overflow = 'auto'; // Enable scrolling
   };
 
   return (
-    <section id="events" className="w-full bg-slate-900 py-10 flex justify-center items-center relative h-screen px-4">
+    <section id="events" className="w-full bg-slate-900 py-10 flex justify-center items-center relative min-h-screen px-4">
       <button
         className="absolute left-0 p-4 bg-gray-700 text-white rounded-full shadow-lg"
         onClick={handlePrev}
@@ -120,16 +104,11 @@ const OngoingEvents = () => {
         &gt;
       </button>
 
-      {/* Form Modal */}
       {isFormOpen && (
-        <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-80 flex justify-center items-center z-50">
-          <div className="relative w-full max-w-4xl h-[90vh] overflow-y-auto"> {/* Add overflow-y-auto */}
-            {/* Your form content here */}
-            <form>
-              {/* Form fields */}
-            </form>
-            {/* Close Button (X) */}
-            <button 
+        <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center z-50">
+          <div className="relative w-full max-w-4xl h-[90vh] overflow-y-auto bg-white p-6 rounded-[20px] shadow-lg">
+            <TicketRegistration />
+            <button
               className="absolute top-4 right-4 bg-gray-500 text-white py-2 px-4 rounded-full"
               onClick={handleCloseForm}
             >

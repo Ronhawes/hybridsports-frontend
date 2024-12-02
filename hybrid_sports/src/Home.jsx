@@ -1,6 +1,6 @@
 import styles from "./style";
-import {Hero, Navbar, Footer,Testimonials, Events, Stats,PlayerRegistration} from "./components"
-import {SignIn } from "./components"
+import {Hero, Navbar, Footer,Testimonials, Events, Stats,PlayerRegistration, } from "./components"
+
 import Content from "./components/content";
 
 const App = () => (

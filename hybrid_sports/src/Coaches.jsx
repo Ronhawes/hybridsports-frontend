@@ -1,75 +1,32 @@
-// CoachesPage.js
-
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from './style';
-import { Navbar, Footer, Testimonials, CoachSessionsButton } from './components';
-import { people02, tour10, tour11, tour14 } from './assets';
+import { Navbar, Footer, Testimonials, CoachSessionsButton, } from './components';
 
 const CoachesPage = () => {
+  const [coaches, setCoaches] = useState([]);
   const [selectedCoach, setSelectedCoach] = useState(null);
 
-  const coaches = [
-    {
-      name: 'Mark Mabonga',
-      title: 'Head Coach',
-      sport: 'Tennis/Padel',
-      academy: 'Hybrid Sports',
-      bio: 'Experienced coach with flexible scheduling for all levels.',
-      email: 'mark@example.com',
-      phoneNumber: '+254710735834',
-      profilePicture: people02,
-      workinghrs: '6am-6pm',
-      levels: 'All levels',
-      Groups: 'Individual and group sessions',
-    },
-    {
-      name: "Stella Kanyi",
-      title: "Gym Instructor",
-      sport: "Fitness",
-      academy: "N/A",
-      bio: "I am a gym instructor with a diploma in fitness and wellness.I am based in Ongata Rongai and work 7-8 hours a day, helping clients achieving fitness goals.",
-      email: "stellakanyi@gmail.com",
-      phoneNumber: "+254708906644",
-      profilePicture: tour14,
-      workinghrs: "7-8 hours",
-      levels: "All levels",
-      Groups: "individual and group sessions",
-    },
-    {
-      name: "Petty Andanda",
-      title: "Tennis Coach",
-      sport: "Tennis",
-      academy: "N/A",
-      bio: "With 8 years of experience, I am an ITF Level 1 certified tennis coach working from 6 AM to 6:30 PM, helping players of all levels.",
-      email: "pettyandanda@gmail.com",
-      phoneNumber: "+254111769929",
-      profilePicture: tour11,
-      workinghrs: "6 AM - 6:30 PM",
-      levels: "All levels",
-      Groups: "individual and group sessions",
-    },
-    {
-      name: "Peter Ngugi",
-      title: "Tennis Coach",
-      sport: "Tennis",
-      academy: "Upper Hill Nairobi",
-      bio: "With 5 years of coaching experience and ITF Play and Stay certificati I work with players at all levels. My sessions run from early morning to evening",
-      email: "activitytennis@gmail.com",
-      phoneNumber: "+254717391077",
-      profilePicture: tour10,
-      workinghrs: "6:30 AM - 7:00 PM Daily",
-      levels: "All levels",
-      Groups: "individual and group sessions",
-    },
-  ];
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const apiUrl = "https://hybridsports-69backend-85bb3e426b16.herokuapp.com/coaches/getAllCoaches";
+        const response = await fetch(apiUrl);
+        if (!response.ok) {
+          throw new Error("Failed to fetch coaches");
+        }
+        const data = await response.json();
+        setCoaches(data);
+      } catch (error) {
+        console.error("Error fetching coaches:", error);
+      }
+    };
 
-  const handleCoachClick = (coach) => {
-    setSelectedCoach(coach);
-  };
+    fetchData();
+  }, []);
 
-  const handleCloseProfile = () => {
-    setSelectedCoach(null);
-  };
+  const handleCoachClick = (coach) => setSelectedCoach(coach);
+
+  const handleCloseProfile = () => setSelectedCoach(null);
 
   return (
     <div className="bg-gray-500 w-full overflow-hidden">
@@ -109,13 +66,13 @@ const CoachesPage = () => {
   );
 };
 
-const CoachCard = ({ name, title, sport, academy, bio, email, phoneNumber, profilePicture, onCardClick }) => (
+const CoachCard = ({ name, title, sport, academy, bio, email, phoneno, profile_picture, onCardClick }) => (
   <div
     className="bg-black text-white shadow-md rounded-lg p-4 cursor-pointer"
     onClick={onCardClick}
   >
     <img
-      src={profilePicture}
+      src={profile_picture}
       alt={`Profile picture of ${name}`}
       className="w-full h-48 object-cover rounded-t-md mb-4"
     />
@@ -125,43 +82,90 @@ const CoachCard = ({ name, title, sport, academy, bio, email, phoneNumber, profi
     <p className="text-sm mb-2">{academy}</p>
     <p className="text-sm mb-2">{bio}</p>
     <p className="text-sm mb-2">Email: {email}</p>
-    <p className="text-sm mb-2">Phone: {phoneNumber}</p>
+    <p className="text-sm mb-2">Phone: {phoneno}</p>
+    
   </div>
 );
 
-const CoachProfile = ({ coach, onClose }) => (
-  <div
-    className="fixed inset-0 bg-black bg-opacity-80 flex justify-center items-center"
-    onClick={onClose}
-    aria-label="Close coach profile"
-  >
+const CoachProfile = ({ coach, onClose }) => {
+  const [selectedDay, setSelectedDay] = useState(null);
+  const [selectedTime, setSelectedTime] = useState(null);
+
+  const handleDayClick = (day) => {
+    setSelectedDay(day === selectedDay ? null : day); // Toggle selected day
+    setSelectedTime(null); // Reset selected time when changing day
+  };
+
+  const handleTimeClick = (time) => {
+    setSelectedTime(time);
+    console.log(`Selected time: ${time}`);
+  };
+
+  return (
     <div
-      className="bg-blue-950 p-5 rounded shadow-md w-full max-w-lg mx-4 relative"
-      onClick={(e) => e.stopPropagation()}
+      className="fixed inset-0 bg-black bg-opacity-80 flex justify-center items-center"
+      onClick={onClose}
+      aria-label="Close coach profile"
     >
-      <button
-        onClick={onClose}
-        className="absolute top-2 right-2 bg-red-500 text-white p-2 rounded-full"
-        aria-label="Close"
+      <div
+        className="bg-blue-950 p-5 rounded shadow-md w-full max-w-lg mx-4 relative"
+        onClick={(e) => e.stopPropagation()}
       >
-        ✕
-      </button>
-      <h2 className="text-xl font-bold">{coach.name}</h2>
-      <img
-        src={coach.profilePicture}
-        alt={`Profile picture of ${coach.name}`}
-        className="w-32 h-32 rounded-full mb-4"
-      />
-      <p className="text-lg font-semibold">{coach.title}</p>
-      <p className="text-md font-semibold">{coach.sport}</p>
-      <p className="text-sm mb-2">Working Hours: {coach.workinghrs}</p>
-      <p className="text-sm mb-2">Levels: {coach.levels}</p>
-      <p className="text-sm mb-2">Groups: {coach.Groups}</p>
-      
-      {/* Display CoachSessionsButton with the coach's name */}
-      <CoachSessionsButton coachName={coach.name} />
+        <button
+          onClick={onClose}
+          className="absolute top-2 right-2 bg-red-500 text-white p-2 rounded-full"
+          aria-label="Close"
+        >
+          ✕
+        </button>
+        <h2 className="text-xl font-bold">{coach.name}</h2>
+        <img
+          src={coach.profile_picture}
+          alt={`Profile picture of ${coach.name}`}
+          className="w-32 h-32 rounded-full mb-4"
+        />
+        <p className="text-lg font-semibold">{coach.title}</p>
+        <p className="text-md font-semibold">{coach.sport}</p>
+        <p className="text-sm mb-2">Working Hours: {coach.working_hours}</p>
+        <p className="text-sm mb-2">Groups: {coach.groups}</p>
+        
+
+        <div className="flex flex-wrap mt-4">
+          {coach.schedule.map(({ day }, index) => (
+            <button
+              key={index}
+              onClick={() => handleDayClick(day)}
+              className={`px-4 py-2 rounded-full ${
+                selectedDay === day ? 'bg-blue-600 text-white' : 'bg-gray-300 text-black'
+              } mb-2`}
+            >
+              {day}
+            </button>
+          ))}
+        </div>
+
+        {selectedDay && (
+          <div className="flex flex-wrap gap-2 mt-4">
+            {coach.schedule
+              .find(({ day }) => day === selectedDay)
+              .times.map((time, index) => (
+                <span
+                  key={index}
+                  onClick={() => handleTimeClick(time)}
+                  className={`text-sm px-3 py-1 rounded cursor-pointer ${
+                    selectedTime === time ? 'bg-blue-600 text-white' : 'bg-gray-800 text-white'
+                  }`}
+                >
+                  {time}
+                </span>
+              ))}
+          </div>
+        )}
+
+        <CoachSessionsButton coachName={coach.name} />
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 export default CoachesPage;

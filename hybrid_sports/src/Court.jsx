@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import styles from "./style";
-import { Navbar, Footer, Testimonials, SignIn, BlockBooking,CoachSessionsButton} from "./components";
+import { Navbar, Footer, Testimonials, SignIn, BlockBooking,CoachSessionsButton, CourtSessionsButton} from "./components";
 import { court01, court02, court03 ,tour16,tour17} from './assets';
 import Button from './components/Academies';
 
@@ -17,6 +17,15 @@ const CourtsPage = () => {
         { day: "Monday-Friday", time: "7 AM - 7 PM", availability: "Available" },
         { day: "Saturday-Sunday", time: "8 AM - 4 PM", availability: "Limited" },
       ],
+      schedule: [
+        { day: 'Monday', times: ['9-10 AM', '10-11 AM', '11-12 PM'] },
+        { day: 'Tuesday', times: ['9-10 AM', '10-11 AM', '11-12 PM'] },
+        { day: 'Wednesday', times: ['9-10 AM', '10-11 AM', '11-12 PM'] },
+        { day: 'Thursday', times: ['9-10 AM', '10-11 AM', '11-12 PM'] },
+        { day: 'Friday', times: ['9-10 AM', '10-11 AM', '11-12 PM'] },
+        { day: 'Saturday', times: ['9-10 AM', '10-11 AM', '11-12 PM'] },
+      ],
+    
       courtManager: {
         name: "Michael Lee",
         contact: "+1122334455",
@@ -34,6 +43,15 @@ const CourtsPage = () => {
         { day: "Monday-Friday", time: "8 AM - 9 PM", availability: "Available" },
         { day: "Saturday-Sunday", time: "9 AM - 7 PM", availability: "Available" },
       ],
+      schedule: [
+        { day: 'Monday', times: ['9-10 AM', '10-11 AM', '11-12 PM'] },
+        { day: 'Tuesday', times: ['9-10 AM', '10-11 AM', '11-12 PM'] },
+        { day: 'Wednesday', times: ['9-10 AM', '10-11 AM', '11-12 PM'] },
+        { day: 'Thursday', times: ['9-10 AM', '10-11 AM', '11-12 PM'] },
+        { day: 'Friday', times: ['9-10 AM', '10-11 AM', '11-12 PM'] },
+        { day: 'Saturday', times: ['9-10 AM', '10-11 AM', '11-12 PM'] },
+      ],
+  
       courtManager: {
         name: "Rebecca Adams",
         contact: "+4455667788",
@@ -100,26 +118,37 @@ const CourtsPage = () => {
 const CourtCard = ({ name, sport, numberOfCourts, profilePicture, onClick }) => {
   return (
     <div className="bg-black text-white shadow-md rounded p-4 cursor-pointer" onClick={onClick}>
-        <img 
-          src={profilePicture} 
-          alt={`${name}'s Profile`} 
-          className="w-full h-48 object-cover rounded-t"
-        />
-        <div>
-          <h2 className="text-lg font-bold mb-2">{name}</h2> 
-          <p className="text-sm mb-2 font-semibold">Sport: {sport}</p>
-          <p className="text-sm mb-2 font-semibold"> Courts: {numberOfCourts}</p>
-        </div>
+      <img 
+        src={profilePicture} 
+        alt={`${name}'s Profile`} 
+        className="w-full h-48 object-cover rounded-t"
+      />
+      <div>
+        <h2 className="text-lg font-bold mb-2">{name}</h2> 
+        <p className="text-sm mb-2 font-semibold">Sport: {sport}</p>
+        <p className="text-sm mb-2 font-semibold">Courts: {numberOfCourts}</p>
       </div>
-    
+    </div>
   );
 };
 
+
 const CourtProfile = ({ court, onClose }) => {
+  const [selectedDay, setSelectedDay] = useState(null);
+  const [selectedTime, setSelectedTime] = useState(null);
+
+  const handleDayClick = (day) => {
+    setSelectedDay(day === selectedDay ? null : day); // Toggle selected day
+    setSelectedTime(null); // Reset selected time when changing the day
+  };
+
+  const handleTimeClick = (time) => {
+    setSelectedTime(time === selectedTime ? null : time); // Toggle selected time
+  };
+
   return (
     <div className="fixed inset-0 bg-black bg-opacity-80 flex justify-center items-center p-4">
       <div className="bg-blue-950 p-8 rounded-lg shadow-lg max-w-lg w-full relative">
-      
         <h2 className="font-poppins font-semibold text-[20px] leading-[32px] text-white">{court.name}</h2>
         <img 
           src={court.profilePicture} 
@@ -137,10 +166,58 @@ const CourtProfile = ({ court, onClose }) => {
             </li>
           ))}
         </ul>
-        <p className="font-poppins font-normal text-[16px] leading-[24px] text-dimWhite">Court Manager: {court.courtManager.name}</p>
-        <p className="font-poppins font-normal text-[16px] leading-[24px] text-dimWhite">Phone: {court.courtManager.contact}</p>
-        <p className="font-poppins font-normal text-[16px] leading-[24px] text-dimWhite">Email: {court.courtManager.email}</p>
-        <p className="font-poppins font-normal text-[16px] leading-[24px] text-dimWhite"><CoachSessionsButton /> </p>
+        
+        {/* Display days in two rows */}
+        <div className="flex flex-wrap mt-4">
+          <div className="flex space-x-2 mb-2">
+            {court.schedule.slice(0, 3).map(({ day }) => (
+              <button
+                key={day}
+                onClick={() => handleDayClick(day)}
+                className={`px-4 py-2 rounded-full ${
+                  selectedDay === day ? 'bg-blue-600 text-white' : 'bg-gray-300 text-black'
+                }`}
+              >
+                {day}
+              </button>
+            ))}
+          </div>
+
+          <div className="flex space-x-2">
+            {court.schedule.slice(3).map(({ day }) => (
+              <button
+                key={day}
+                onClick={() => handleDayClick(day)}
+                className={`px-4 py-2 rounded-full ${
+                  selectedDay === day ? 'bg-blue-600 text-white' : 'bg-gray-300 text-black'
+                }`}
+              >
+                {day}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* Display times for the selected day */}
+        {selectedDay && (
+          <div className="flex flex-wrap gap-2 mt-4">
+            {court.schedule
+              .find(({ day }) => day === selectedDay)
+              .times.map((time, index) => (
+                <button
+                  key={index}
+                  onClick={() => handleTimeClick(time)}
+                  className={`text-sm px-3 py-1 rounded ${
+                    selectedTime === time ? 'bg-blue-600 text-white' : 'bg-gray-800 text-white'
+                  }`}
+                >
+                  {time}
+                </button>
+              ))}
+          </div>
+        )}
+
+        <CourtSessionsButton courtName={court.name} />
         <button onClick={onClose} className="mt-4 bg-gray-500 text-white p-2 rounded">
           Close
         </button>

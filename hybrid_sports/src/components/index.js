@@ -24,8 +24,13 @@ import Player2Registration from "./Player2Registration";
 import CourtRegistration from "./CourtRegistration";
 import BlockBooking from "./BlockBooking";
 import Login from "./Login";
+import Login1 from "./login1.jsx";
 import Booking1 from "./Booking";
-
+import Juniors from "./Juniors";
+import CourtSessionsButton from "./Button2";
+import ticketRegistration from "./Button3";
+import Tickets from "./tickets";
+import CoachesAdmin from "./CoachesSignin.jsx";
 
 export {
   Navbar,
@@ -54,5 +59,7 @@ export {
   CourtRegistration,
   BlockBooking,
   Login,
-  Booking1
+  Login1,
+  Booking1,
+  Juniors,CourtSessionsButton, ticketRegistration, Tickets, CoachesAdmin
 };

@@ -15,7 +15,6 @@ const Button = ({ additionalClasses = "" }) => {
   const handleExit = () => {
     setShowForm(false);
     setFormData({ fullName: '', age: '', partner: '', coach_Academy: '', phoneNo: '', gender: '' });
-    document.body.style.overflow = 'auto'; // Re-enable scrolling
   };
 
   const handleChange = (e) => {
@@ -29,7 +28,6 @@ const Button = ({ additionalClasses = "" }) => {
     }
   };
 
-  // Asynchronous form submission to your API
   const onSubmit = async (event) => {
     event.preventDefault();
     setResult("Sending...");
@@ -55,7 +53,7 @@ const Button = ({ additionalClasses = "" }) => {
 
       if (response.ok) {
         setResult("Registration successful!");
-        setFormData({ fullName: '', age: '', partner: '', coach_Academy: '', phoneNo: '', gender:'' });
+        setFormData({ fullName: '', age: '', partner: '', coach_Academy: '', phoneNo: '', gender: '' });
       } else {
         const data = await response.json();
         setResult(`Error: ${data.message || 'Something went wrong'}`);
@@ -68,7 +66,6 @@ const Button = ({ additionalClasses = "" }) => {
 
   const handleShowForm = () => {
     setShowForm(true);
-    document.body.style.overflow = 'hidden'; // Disable scrolling on the background
   };
 
   return (
@@ -81,104 +78,106 @@ const Button = ({ additionalClasses = "" }) => {
         Sign up Now
       </button>
       {showForm && (
-        <div className="fixed inset-0 bg-black bg-opacity-80 flex justify-center items-center z-50">
-          <div className="bg-transparent p-5 rounded shadow-md w-full max-w-lg mx-4 mt-8 max-h-[80vh] overflow-y-auto">
-            <form
-              onSubmit={onSubmit}
-              onKeyPress={handleKeyPress}
-            >
-              <h2 className="font-poppins font-semibold text-[32px] text-white leading-[40px] w-full">
-                Register as a Player
-              </h2>
-              <p className="mt-4 text-white p-2 rounded">Please fill in the details below</p>
+        <>
+          {/* Background overlay */}
+          <div
+            className="fixed inset-0 bg-black bg-opacity-50 z-40"
+            onClick={handleExit} // Close form if clicking outside
+          ></div>
 
-              <label className="mt-4 text-white p-2 rounded">* Full names:</label>
-              <input 
-                type="text" 
-                name="fullName" 
-                value={formData.fullName} 
-                onChange={handleChange} 
-                className="bg-white border p-2 mb-4 w-full" 
-                required 
-              />
+          {/* Form container */}
+          <div className="fixed inset-0 flex justify-center items-center z-50">
+            <div className="bg-white p-5 rounded shadow-md w-full max-w-lg mx-4 mt-8 max-h-[80vh] overflow-y-auto">
+              <form onSubmit={onSubmit} onKeyPress={handleKeyPress}>
+                <h2 className="font-poppins font-semibold text-[32px] text-black leading-[40px] w-full">
+                  Register as a Player
+                </h2>
+                <p className="mt-4 text-black p-2 rounded">Please fill in the details below</p>
 
-              <label className="mt-4 text-white p-2 rounded">* Phone No:</label>
-              <input 
-                type="tel" 
-                name="phoneNo" 
-                value={formData.phoneNo} onChange={handleChange} 
-                className="bg-white border p-2 mb-4 w-full" 
-                required 
-              />
+                <label className="mt-4 text-black p-2 rounded">* Full names:</label>
+                <input 
+                  type="text" 
+                  name="fullName" 
+                  value={formData.fullName} 
+                  onChange={handleChange} 
+                  className="bg-white border p-2 mb-4 w-full" 
+                  required 
+                />
 
-              <label className="mt-4 text-white p-2 rounded">* Age:</label>
-              <input 
-                type="number" 
-                name="age" 
-                value={formData.age} 
-                onChange={handleChange} 
-                className="bg-white border p-2 mb-4 w-full" 
-                required 
-              />
+                <label className="mt-4 text-black p-2 rounded">* Phone No:</label>
+                <input 
+                  type="tel" 
+                  name="phoneNo" 
+                  value={formData.phoneNo} 
+                  onChange={handleChange} 
+                  className="bg-white border p-2 mb-4 w-full" 
+                  required 
+                />
 
-              <label className="mt-4 text-white p-2 rounded">* Coach/Academy:</label>
-              <input 
-                type="text"
-                name="coach_Academy" 
-                value={formData.coach_Academy} 
-                onChange={handleChange} 
-                className="bg-white border p-2 mb-4 w-full"
-                required
-              />
+                <label className="mt-4 text-black p-2 rounded">* Age:</label>
+                <input 
+                  type="number" 
+                  name="age" 
+                  value={formData.age} 
+                  onChange={handleChange} 
+                  className="bg-white border p-2 mb-4 w-full" 
+                  required 
+                />
 
-              <label className="mt-4 text-white p-2 rounded">* Partner:</label>
-              <input 
-                type="text" 
-                name="partner" 
-                value={formData.partner} 
-                onChange={handleChange} 
-                className="bg-white border p-2 mb-4 w-full" 
-                required 
-              />
-              <label className="mt-4 text-white p-2 rounded">* Gender:</label>
-              <select 
-                name="gender" 
-                value={formData.gender} 
-                onChange={handleChange} 
-                className="bg-white border p-2 mb-4 w-full" 
-                required
-              >
-                <option value="">Select Gender</option>
-                <option value="Male">Male</option>
-                <option value="Female">Female</option>
-                <option value="Other">Other</option>
-              </select>
-              
-              
+                <label className="mt-4 text-black p-2 rounded">* Coach/Academy:</label>
+                <input 
+                  type="text"
+                  name="coach_Academy" 
+                  value={formData.coach_Academy} 
+                  onChange={handleChange} 
+                  className="bg-white border p-2 mb-4 w-full"
+                  required
+                />
 
-           
-             
+                <label className="mt-4 text-black p-2 rounded">* Partner:</label>
+                <input 
+                  type="text" 
+                  name="partner" 
+                  value={formData.partner} 
+                  onChange={handleChange} 
+                  className="bg-white border p-2 mb-4 w-full" 
+                  required 
+                />
+                
+                <label className="mt-4 text-black p-2 rounded">* Gender:</label>
+                <select 
+                  name="gender" 
+                  value={formData.gender} 
+                  onChange={handleChange} 
+                  className="bg-white border p-2 mb-4 w-full" 
+                  required
+                >
+                  <option value="">Select Gender</option>
+                  <option value="Male">Male</option>
+                  <option value="Female">Female</option>
+                  <option value="Other">Other</option>
+                </select>
 
-              <button
-                type="submit"
-                className="mt-4 bg-gray-500 text-white p-2 rounded btn-primary"
-              >
-                Submit
-              </button>
+                <button
+                  type="submit"
+                  className="mt-4 bg-gray-500 text-white p-2 rounded btn-primary"
+                >
+                  Submit
+                </button>
 
-              {/* Display the result message */}
-              <p className="mt-4 text-white">{result}</p>
+                <p className="mt-4 text-black">{result}</p>
 
-              <button
-                type="button"
-                onClick={handleExit}
-                className="mt-4 bg-gray-500 text-white p-2 rounded"
-              >
-                Exit
-              </button>
-            </form>
+                <button
+                  type="button"
+                  onClick={handleExit}
+                  className="mt-4 bg-gray-500 text-white p-2 rounded"
+                >
+                  Exit
+                </button>
+              </form>
+            </div>
           </div>
-        </div>
+        </>
       )}
     </>
   );

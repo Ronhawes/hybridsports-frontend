@@ -1,54 +1,16 @@
 import React, { useState } from "react";
-import CoachesAdmin from "./CoachesSignin";
 
-const Login = () => {
-  const [loggedInCoach, setLoggedInCoach] = useState(null);
-
-  const handleLoginSuccess = (coach) => {
-    setLoggedInCoach(coach);
-  };
-
-  return (
-    <>
-      {!loggedInCoach ? (
-        <LoginForm onLoginSuccess={handleLoginSuccess} />
-      ) : (
-        <CoachesAdmin coach={loggedInCoach} />
-      )}
-    </>
-  );
-};
-
-const LoginForm = ({ onLoginSuccess }) => {
+const Login1 = ({ onLoginSuccess }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
-  const handleLogin = async (e) => {
+  const handleLogin = (e) => {
     e.preventDefault();
-    try {
-      const response = await fetch(
-        "https://hybridsports-69backend-85bb3e426b16.herokuapp.com/coaches/getAllCoaches"
-      );
-
-      if (!response.ok) {
-        throw new Error("Failed to fetch data from the server.");
-      }
-
-      const coaches = await response.json();
-
-      const matchedCoach = coaches.find(
-        (coach) => coach.username === username && coach.password === password
-      );
-
-      if (matchedCoach) {
-        onLoginSuccess(matchedCoach);
-      } else {
-        setError("Invalid username or password.");
-      }
-    } catch (error) {
-      console.error("Login error:", error);
-      setError("An error occurred while logging in. Please try again.");
+    if (username === "Markmabonga" && password === "Mabonga@2000") {
+      onLoginSuccess(); // Call the function to proceed to the admin page
+    } else {
+      setError("Invalid username or password");
     }
   };
 
@@ -90,4 +52,4 @@ const LoginForm = ({ onLoginSuccess }) => {
   );
 };
 
-export default Login;
+export default Login1;

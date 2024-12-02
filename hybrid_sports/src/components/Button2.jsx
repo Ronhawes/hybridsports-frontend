@@ -1,25 +1,25 @@
 import React, { useState, useEffect, useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowUp, faArrowDown } from "@fortawesome/free-solid-svg-icons";
+import { court } from "../assets";
 
-const CoachSessionsButton = ({ coachName }) => {
+const CourtSessionsButton = ({ courtName }) => {
   const [showForm, setShowForm] = useState(false);
   const [formData, setFormData] = useState({
     fullName: "",
     idNo: "",
     email: "",
     phoneNo: "",
-    day: ""
+    day: "", // New day field added here
   });
   const [sessions, setSessions] = useState([
     { id: 1, time: "9:00 AM - 10:00 AM", available: true },
     { id: 2, time: "10:00 AM - 11:00 AM", available: true },
     { id: 3, time: "11:00 AM - 12:00 PM", available: true },
-    { id: 4, time: "1:00 PM - 2:00 PM", available: true }
+    { id: 4, time: "1:00 PM - 2:00 PM", available: true },
   ]);
   const [selectedSessionId, setSelectedSessionId] = useState(null);
   const [result, setResult] = useState("");
-  const [mpesaPaymentSuccess, setMpesaPaymentSuccess] = useState(false); // New flag
   const formRef = useRef(null);
 
   useEffect(() => {
@@ -31,28 +31,30 @@ const CoachSessionsButton = ({ coachName }) => {
     formData.idNo &&
     formData.email &&
     formData.phoneNo &&
-    formData.day &&
+    formData.day && // Ensure day is selected
     selectedSessionId !== null;
 
   const onSubmit = async (event) => {
     event.preventDefault();
-    if (!mpesaPaymentSuccess) {
-      alert("Please complete Mpesa payment before submitting.");
+    if (!isFormComplete()) {
+      alert(
+        "Please fill in all the required details, select a day, and choose a session before submitting."
+      );
       return;
     }
 
     setResult("Sending...");
 
     try {
-      const apiUrl = "https://hybridsports-69backend-85bb3e426b16.herokuapp.com/coachesBooking/Add";
+      const apiUrl = "https://hybridsports-69backend-85bb3e426b16.herokuapp.com/courts/Add";
       const response = await fetch(apiUrl, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           ...formData,
           time: sessions.find((s) => s.id === selectedSessionId).time,
-          coach: coachName
-        })
+          court: courtName,
+        }),
       });
 
       if (response.ok) {
@@ -64,7 +66,7 @@ const CoachSessionsButton = ({ coachName }) => {
           )
         );
         setResult("Booking successfully submitted!");
-        setTimeout(() => setResult(""), 5000); // Message disappears after 5 seconds
+        setTimeout(() => setResult(""), 5000);
         handleExit();
       } else {
         const errorData = await response.json();
@@ -76,31 +78,6 @@ const CoachSessionsButton = ({ coachName }) => {
     }
   };
 
-  const onSubmitPhoneAndPrice = async () => {
-    setResult("Initiating payment...");
-    const { phoneNo } = formData;
-  
-    try {
-      const apiUrl = "https://hybridsports-69backend-85bb3e426b16.herokuapp.com/tickets/stk";
-      const response = await fetch(apiUrl, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ phoneNo, price: 1500 }) // Updated price to 1500
-      });
-  
-      if (response.ok) {
-        setResult("Payment successful! You can now book your session.");
-        setMpesaPaymentSuccess(true); // Set payment success
-      } else {
-        const data = await response.json();
-        setResult(`Error: ${data.message || "Payment failed"}`);
-      }
-    } catch (error) {
-      console.error("Error initiating payment:", error);
-      setResult("Error initiating payment. Please try again later.");
-    }
-  };
-  
   const handleChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
@@ -109,7 +86,6 @@ const CoachSessionsButton = ({ coachName }) => {
     setFormData({ fullName: "", idNo: "", email: "", phoneNo: "", day: "" });
     setSelectedSessionId(null);
     setResult("");
-    setMpesaPaymentSuccess(false); // Reset payment status
   };
 
   const scrollUp = () => (formRef.current.scrollTop -= 50);
@@ -146,8 +122,10 @@ const CoachSessionsButton = ({ coachName }) => {
                     </label>
                   </div>
                 ))}
+                
+                {/* Day selection dropdown */}
                 <div className="mb-4">
-                  <label className="block mb-1">Select Day:</label>
+                  <label className="block mb-1">Select a Day:</label>
                   <select
                     name="day"
                     value={formData.day}
@@ -155,15 +133,17 @@ const CoachSessionsButton = ({ coachName }) => {
                     required
                     className="border border-gray-300 rounded p-2 w-full mt-1"
                   >
-                    <option value="">Choose a Day</option>
+                    <option value="" disabled>Select a day</option>
                     <option value="Monday">Monday</option>
                     <option value="Tuesday">Tuesday</option>
                     <option value="Wednesday">Wednesday</option>
                     <option value="Thursday">Thursday</option>
                     <option value="Friday">Friday</option>
                     <option value="Saturday">Saturday</option>
+                    <option value="Sunday">Sunday</option>
                   </select>
                 </div>
+
                 <div className="mt-4 mb-2">
                   <label className="block">Select a Session:</label>
                   <div className="flex flex-col mt-1">
@@ -189,22 +169,11 @@ const CoachSessionsButton = ({ coachName }) => {
                     ))}
                   </div>
                 </div>
-                <button
-                  type="button"
-                  onClick={onSubmitPhoneAndPrice}
-                  className="mt-4 bg-blue-500 text-white py-2 px-4 rounded"
-                >
-                  Make Mpesa Payment
-                </button>
+
                 <div className="flex justify-between mt-4">
                   <button
                     type="submit"
-                    disabled={!mpesaPaymentSuccess} // Disable until payment is successful
-                    className={`py-2 px-4 rounded transition duration-200 ${
-                      mpesaPaymentSuccess
-                        ? "bg-blue-500 text-white hover:bg-blue-600"
-                        : "bg-gray-400 text-gray-200 cursor-not-allowed"
-                    }`}
+                    className="py-2 px-4 bg-blue-500 text-white rounded transition duration-200 hover:bg-blue-600"
                   >
                     Submit Booking
                   </button>
@@ -220,12 +189,12 @@ const CoachSessionsButton = ({ coachName }) => {
               {result && <div className="mt-2 text-red-500">{result}</div>}
             </div>
             <div className="absolute top-1/2 left-2 z-10 transform -translate-y-1/2">
-              <button onClick={scrollUp}>
+              <button onClick={scrollUp} aria-label="Scroll up" className="p-2 bg-blue-500 text-white rounded-full hover:bg-blue-600">
                 <FontAwesomeIcon icon={faArrowUp} />
               </button>
             </div>
-            <div className="absolute bottom-2 left-2 z-10">
-              <button onClick={scrollDown}>
+            <div className="absolute top-1/2 right-2 z-10 transform -translate-y-1/2">
+              <button onClick={scrollDown} aria-label="Scroll down" className="p-2 bg-blue-500 text-white rounded-full hover:bg-blue-600">
                 <FontAwesomeIcon icon={faArrowDown} />
               </button>
             </div>
@@ -236,4 +205,4 @@ const CoachSessionsButton = ({ coachName }) => {
   );
 };
 
-export default CoachSessionsButton;
+export default CourtSessionsButton;

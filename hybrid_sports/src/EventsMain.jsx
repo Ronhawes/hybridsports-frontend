@@ -1,6 +1,8 @@
 import styles from "./style";
 import { Hero, Navbar, Footer, Testimonials, Events, Stats, SignIn, PlayerRegistration } from "./components";
 import { tour16, tour17 } from "./assets";
+import TicketRegistration from "./components/Button3";
+import Button from "./components/Button";
 
 const EventsMain = () => (
   <div className="bg-gray-500 w-full overflow-hidden">
@@ -17,6 +19,8 @@ const EventsMain = () => (
   <div className={` ${styles.paddingX} ${styles.flexCenter}`}>
     <div className={`${styles.boxWidth}`}>
       <Events/>
+    
+          
       <Testimonials />
       
     </div>
